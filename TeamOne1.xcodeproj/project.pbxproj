@@ -14,6 +14,8 @@
 		9F4CB94C2C4DF9B000D4847F /* TeamOne1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB94A2C4DF9B000D4847F /* TeamOne1.xcdatamodeld */; };
 		9F4CB94E2C4DF9B100D4847F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F4CB94D2C4DF9B100D4847F /* Assets.xcassets */; };
 		9F4CB9512C4DF9B100D4847F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 9F4CB9502C4DF9B100D4847F /* Base */; };
+		9F4CB9592C4E3C0100D4847F /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB9582C4E3C0100D4847F /* MovieDetailView.swift */; };
+		9F4CB95C2C4E3F9B00D4847F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F4CB95B2C4E3F9B00D4847F /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,7 @@
 		9F4CB94D2C4DF9B100D4847F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F4CB9502C4DF9B100D4847F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F4CB9522C4DF9B100D4847F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F4CB9582C4E3C0100D4847F /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F4CB95C2C4E3F9B00D4847F /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				9F4CB9442C4DF9B000D4847F /* AppDelegate.swift */,
+				9F4CB9582C4E3C0100D4847F /* MovieDetailView.swift */,
 				9F4CB9462C4DF9B000D4847F /* SceneDelegate.swift */,
 				9F4CB9482C4DF9B000D4847F /* ViewController.swift */,
 				566D85F52C4E3BF300D59102 /* SignupViewController.swift */,
@@ -86,6 +91,9 @@
 			dependencies = (
 			);
 			name = TeamOne1;
+			packageProductDependencies = (
+				9F4CB95B2C4E3F9B00D4847F /* SnapKit */,
+			);
 			productName = TeamOne1;
 			productReference = 9F4CB9412C4DF9B000D4847F /* TeamOne1.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 9F4CB9382C4DF9B000D4847F;
+			packageReferences = (
+				9F4CB95A2C4E3F9B00D4847F /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 9F4CB9422C4DF9B000D4847F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -140,7 +151,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
+				9F4CB9592C4E3C0100D4847F /* MovieDetailView.swift in Sources */,
+
 				566D85F62C4E3BF300D59102 /* SignupViewController.swift in Sources */,
+
 				9F4CB9492C4DF9B000D4847F /* ViewController.swift in Sources */,
 				9F4CB9452C4DF9B000D4847F /* AppDelegate.swift in Sources */,
 				9F4CB9472C4DF9B000D4847F /* SceneDelegate.swift in Sources */,
@@ -359,6 +374,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9F4CB95A2C4E3F9B00D4847F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9F4CB95B2C4E3F9B00D4847F /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F4CB95A2C4E3F9B00D4847F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9F4CB94A2C4DF9B000D4847F /* TeamOne1.xcdatamodeld */ = {

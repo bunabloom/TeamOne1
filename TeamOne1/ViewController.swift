@@ -6,8 +6,20 @@
 //
 
 import UIKit
-
+import SnapKit
 class ViewController: UIViewController {
+
+  let movieview = MovieDetailView()
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = .white
+    
+    
+    
+    // Do any additional setup after loading the view.
+  }
+
     
     // 로고 이미지 넣기
     
@@ -43,6 +55,7 @@ class ViewController: UIViewController {
         button.addTarget(self, action: #selector(signupTapped), for: .touchUpInside)
         return button
     }()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
