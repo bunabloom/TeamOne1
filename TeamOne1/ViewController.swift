@@ -13,10 +13,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
-    view.addSubview(movieview)
-    movieview.snp.makeConstraints{
-      $0.edges.equalToSuperview()
-    }
+    
     
     
     // Do any additional setup after loading the view.
