@@ -49,26 +49,26 @@ class SignUPView: UIView {
 
   
 
-  private let signupButton: UIButton = {
+ lazy var signupButton: UIButton = {
       let button = UIButton(type: .system)
       button.setTitle("Sign Up", for: .normal)
       button.backgroundColor = .systemBlue
       button.setTitleColor(.white, for: .normal)
       button.layer.cornerRadius = 5
-      //button.addTarget(self, action: #selector(signupTapped), for: .touchUpInside)
+
       return button
   }()
 
-  private let cancelButton: UIButton = {
+   lazy var cancelButton: UIButton = {
       let button = UIButton(type: .system)
       button.setTitle("Cancel", for: .normal)
-      //button.addTarget(self, action: #selector(cancelTapped), for: .touchUpInside)
+      
       return button
   }()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    self.backgroundColor = .blue
+    self.backgroundColor = .white
     setupLayout()
   }
   

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SignupViewController: UIViewController, ConstraintRelatableTarget {
+final class SignupViewController: UIViewController {
   let signUpView = SignUPView()
   
   
@@ -20,11 +20,13 @@ class SignupViewController: UIViewController, ConstraintRelatableTarget {
     
     
   }
-  func configureBasic(){
+  final private func configureBasic(){
     view.addSubview(signUpView)
     signUpView.snp.makeConstraints{
       $0.edges.equalToSuperview()
     }
+    signUpView.cancelButton.addTarget(self, action: #selector(cancelTapped), for: .touchUpInside)
+    signUpView.signupButton.addTarget(self, action: #selector(signupTapped), for: .touchUpInside)
   }
   
   
