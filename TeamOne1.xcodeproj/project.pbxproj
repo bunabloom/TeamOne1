@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		566D85F62C4E3BF300D59102 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D85F52C4E3BF300D59102 /* SignupViewController.swift */; };
 		9F4CB9452C4DF9B000D4847F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB9442C4DF9B000D4847F /* AppDelegate.swift */; };
 		9F4CB9472C4DF9B000D4847F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB9462C4DF9B000D4847F /* SceneDelegate.swift */; };
 		9F4CB9492C4DF9B000D4847F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB9482C4DF9B000D4847F /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		566D85F52C4E3BF300D59102 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9F4CB9412C4DF9B000D4847F /* TeamOne1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamOne1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4CB9442C4DF9B000D4847F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F4CB9462C4DF9B000D4847F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				9F4CB9442C4DF9B000D4847F /* AppDelegate.swift */,
 				9F4CB9462C4DF9B000D4847F /* SceneDelegate.swift */,
 				9F4CB9482C4DF9B000D4847F /* ViewController.swift */,
+				566D85F52C4E3BF300D59102 /* SignupViewController.swift */,
 				9F4CB94D2C4DF9B100D4847F /* Assets.xcassets */,
 				9F4CB94F2C4DF9B100D4847F /* LaunchScreen.storyboard */,
 				9F4CB9522C4DF9B100D4847F /* Info.plist */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				566D85F62C4E3BF300D59102 /* SignupViewController.swift in Sources */,
 				9F4CB9492C4DF9B000D4847F /* ViewController.swift in Sources */,
 				9F4CB9452C4DF9B000D4847F /* AppDelegate.swift in Sources */,
 				9F4CB9472C4DF9B000D4847F /* SceneDelegate.swift in Sources */,
