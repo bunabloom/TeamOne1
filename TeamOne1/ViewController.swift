@@ -13,8 +13,15 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
     
+    view.backgroundColor = UIColor(red: 255/255, green: 249/255, blue: 208/255, alpha: 1.0)
+
+    view.addSubview(idTextField)
+    view.addSubview(pwTextField)
+    view.addSubview(loginButton)
+    view.addSubview(signupButton)
+
+    setupLayout()
     
     
     // Do any additional setup after loading the view.
@@ -57,17 +64,7 @@ class ViewController: UIViewController {
     }()
 
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 255/255, green: 249/255, blue: 208/255, alpha: 1.0)
 
-        view.addSubview(idTextField)
-        view.addSubview(pwTextField)
-        view.addSubview(loginButton)
-        view.addSubview(signupButton)
-
-        setupLayout()
-    }
 
     private func setupLayout() {
         idTextField.translatesAutoresizingMaskIntoConstraints = false
