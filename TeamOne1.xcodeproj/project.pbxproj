@@ -18,6 +18,7 @@
 		9F4CB95C2C4E3F9B00D4847F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F4CB95B2C4E3F9B00D4847F /* SnapKit */; };
 		9F4CB98B2C4ED9E400D4847F /* SignUPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB98A2C4ED9E400D4847F /* SignUPView.swift */; };
 		9F4CB98D2C4ED9FC00D4847F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB98C2C4ED9FC00D4847F /* LoginView.swift */; };
+		9F4CB98F2C4EE8C000D4847F /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		9F4CB9582C4E3C0100D4847F /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		9F4CB98A2C4ED9E400D4847F /* SignUPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPView.swift; sourceTree = "<group>"; };
 		9F4CB98C2C4ED9FC00D4847F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				566D85F52C4E3BF300D59102 /* SignupViewController.swift */,
 				9F4CB9482C4DF9B000D4847F /* LoginViewController.swift */,
+				9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				9F4CB9472C4DF9B000D4847F /* SceneDelegate.swift in Sources */,
 				9F4CB98B2C4ED9E400D4847F /* SignUPView.swift in Sources */,
 				9F4CB98D2C4ED9FC00D4847F /* LoginView.swift in Sources */,
+				9F4CB98F2C4EE8C000D4847F /* MovieDetailViewController.swift in Sources */,
 				9F4CB94C2C4DF9B000D4847F /* TeamOne1.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
