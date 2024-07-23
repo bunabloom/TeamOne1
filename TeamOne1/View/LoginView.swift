@@ -9,6 +9,16 @@ import UIKit
 
 final class LoginView: UIView {
     
+    // 테스트용 버튼 - 나중에 꼭 지울것
+   lazy var testButton: UIButton = {
+        let bt = UIButton()
+        bt.setTitle("test", for: .normal)
+        bt.setTitleColor(.red, for: .normal)
+        bt.backgroundColor = .blue
+        return bt
+    }()
+    
+    
   private let logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
@@ -66,7 +76,8 @@ final class LoginView: UIView {
       idTextField,
       pwTextField,
       loginButton,
-      signupButton
+      signupButton,
+      testButton
     ].forEach{addSubview($0)}
     
     logoImageView.snp.makeConstraints {
@@ -100,7 +111,11 @@ final class LoginView: UIView {
       $0.width.equalTo(loginButton)
       $0.height.equalTo(loginButton)
     }
-    
+      
+      testButton.snp.makeConstraints {
+          $0.bottom.equalToSuperview().inset(10)
+          $0.trailing.equalToSuperview().inset(10)
+      }
     
     
 

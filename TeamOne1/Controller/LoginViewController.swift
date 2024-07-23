@@ -27,6 +27,9 @@ class LoginViewController: UIViewController {
   func configureAddTarget(){
     loginView.signupButton.addTarget(self, action: #selector(signupTapped), for: .touchDown)
     loginView.loginButton.addTarget(self, action: #selector(loginTapped), for: .touchDown)
+      
+    // test용 버튼 나중에 꼭 지울것!
+      loginView.testButton.addTarget(self, action: #selector(testbt), for: .touchUpInside)
   }
 
 
@@ -61,5 +64,10 @@ class LoginViewController: UIViewController {
             completion?()
         })
         present(alert, animated: true, completion: nil)
+    }
+    
+    // 테스트용 버튼 나중에 꼭 지울것
+    @objc private func testbt() {
+        self.navigationController?.pushViewController(MovieListViewController(), animated: true)
     }
 }
