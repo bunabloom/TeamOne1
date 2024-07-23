@@ -8,15 +8,22 @@
 import UIKit
 
 final class LoginView: UIView {
+    
+  private let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "logo")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
   
-  private let idTextField: UITextField = {
+  let idTextField: UITextField = {
       let textField = UITextField()
       textField.placeholder = "id"
       textField.borderStyle = .roundedRect
       return textField
   }()
   
-  private let pwTextField: UITextField = {
+  let pwTextField: UITextField = {
       let textField = UITextField()
       textField.placeholder = "pw"
       textField.borderStyle = .roundedRect
@@ -55,16 +62,23 @@ final class LoginView: UIView {
   private func configureUI() {
     self.backgroundColor = UIColor(red: 255/255, green: 249/255, blue: 208/255, alpha: 1.0)
     [
+      logoImageView,
       idTextField,
       pwTextField,
       loginButton,
       signupButton
     ].forEach{addSubview($0)}
     
+    logoImageView.snp.makeConstraints {
+      $0.centerX.equalToSuperview()
+      $0.top.equalTo(safeAreaLayoutGuide.snp.top).offset(30)
+      $0.width.equalTo(300)
+      $0.height.equalTo(300)
+      }
     
     idTextField.snp.makeConstraints{
       $0.centerX.equalTo(safeAreaLayoutGuide)
-      $0.top.equalTo(safeAreaLayoutGuide).offset(60)
+      $0.top.equalTo(logoImageView.snp.bottom).offset(5)
       $0.width.equalTo(300)
       $0.height.equalTo(40)
     }
