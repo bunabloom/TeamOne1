@@ -18,32 +18,31 @@ class SignUPView: UIView {
       return label
   }()
   
-  private let usernameTextField: UITextField = {
+  let usernameTextField: UITextField = {
       let textField = UITextField()
       textField.placeholder = "이름"
       textField.borderStyle = .roundedRect
       return textField
   }()
   
-  private let userbirthTextField: UITextField = {
+  let userbirthTextField: UITextField = {
       let textField = UITextField()
       textField.placeholder = "생년월일"
       textField.borderStyle = .roundedRect
       return textField
   }()
   
-  private let useridTextField: UITextField = {
+  let useridTextField: UITextField = {
       let textField = UITextField()
       textField.placeholder = "ID"
       textField.borderStyle = .roundedRect
       return textField
   }()
 
-  private let passwordTextField: UITextField = {
+  let passwordTextField: UITextField = {
       let textField = UITextField()
       textField.placeholder = "PW"
       textField.borderStyle = .roundedRect
-      textField.isSecureTextEntry = true
       return textField
   }()
 
@@ -77,6 +76,8 @@ class SignUPView: UIView {
   }
   
   private func setupLayout() {
+      
+      self.backgroundColor = UIColor(red: 255/255, green: 249/255, blue: 208/255, alpha: 1.0)
     
     [
       titleLabel,
@@ -135,37 +136,5 @@ class SignUPView: UIView {
       $0.height.equalTo(40)
     }
     
-    
-      
-      
-      
-     
-
-      
-     
-//      userbirthTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 20),
-//
-//      
-//      useridTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//      useridTextField.topAnchor.constraint(equalTo: userbirthTextField.bottomAnchor, constant: 20),
-//
-//      
-//      passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//      passwordTextField.topAnchor.constraint(equalTo: useridTextField.bottomAnchor, constant: 20),
-//      
-//      
-//      
-//      signupButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//      signupButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
-//    
-//      signupButton.widthAnchor.constraint(equalToConstant: 120),
-//      signupButton.heightAnchor.constraint(equalToConstant: 40),
-//      
-//      cancelButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//      cancelButton.topAnchor.constraint(equalTo: signupButton.bottomAnchor, constant: 10),
-//      cancelButton.widthAnchor.constraint(equalToConstant: 120),
-//      cancelButton.heightAnchor.constraint(equalToConstant: 40)
-//    ])
-//    
   }
 }
