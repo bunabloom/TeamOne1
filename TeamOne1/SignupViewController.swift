@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class SignupViewController: UIViewController {
     
@@ -67,69 +68,86 @@ class SignupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(red: 255/255, green: 249/255, blue: 208/255, alpha: 1.0)
 
-        view.addSubview(titleLabel)
-        view.addSubview(usernameTextField)
-        view.addSubview(userbirthTextField)
-        view.addSubview(useridTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(signupButton)
-        view.addSubview(cancelButton)
+        [titleLabel, usernameTextField, userbirthTextField, useridTextField, passwordTextField, signupButton, cancelButton]
+                    .forEach { view.addSubview($0) }
+        
 
         setupLayout()
     }
 
     private func setupLayout() {
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        usernameTextField.translatesAutoresizingMaskIntoConstraints = false
-        userbirthTextField.translatesAutoresizingMaskIntoConstraints = false
-        useridTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        signupButton.translatesAutoresizingMaskIntoConstraints = false
-        cancelButton.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            titleLabel.widthAnchor.constraint(equalToConstant: 300),
-            titleLabel.heightAnchor.constraint(equalToConstant: 40),
-            
-            usernameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            usernameTextField.centerYAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50),
-            usernameTextField.widthAnchor.constraint(equalToConstant: 300),
-            usernameTextField.heightAnchor.constraint(equalToConstant: 40),
-            
-            userbirthTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            userbirthTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 20),
-            userbirthTextField.widthAnchor.constraint(equalToConstant: 300),
-            userbirthTextField.heightAnchor.constraint(equalToConstant: 40),
-            
-            useridTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            useridTextField.topAnchor.constraint(equalTo: userbirthTextField.bottomAnchor, constant: 20),
-            useridTextField.widthAnchor.constraint(equalToConstant: 300),
-            useridTextField.heightAnchor.constraint(equalToConstant: 40),
-
-            passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            passwordTextField.topAnchor.constraint(equalTo: useridTextField.bottomAnchor, constant: 20),
-            passwordTextField.widthAnchor.constraint(equalToConstant: 300),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 40),
-
-       
-            signupButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signupButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
-            signupButton.widthAnchor.constraint(equalToConstant: 120),
-            signupButton.heightAnchor.constraint(equalToConstant: 40),
-
-            cancelButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            cancelButton.topAnchor.constraint(equalTo: signupButton.bottomAnchor, constant: 10),
-            cancelButton.widthAnchor.constraint(equalToConstant: 120),
-            cancelButton.heightAnchor.constraint(equalToConstant: 40)
-        ])
+        titleLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            $0.width.equalTo(300)
+            $0.height.equalTo(40)
+        }
+        
+        usernameTextField.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.width.equalTo(300)
+            $0.height.equalTo(40)
+        }
+        
+        userbirthTextField.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(usernameTextField.snp.bottom).offset(20)
+            $0.width.equalTo(300)
+            $0.height.equalTo(40)
+        }
+        
+        useridTextField.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(userbirthTextField.snp.bottom).offset(20)
+            $0.width.equalTo(300)
+            $0.height.equalTo(40)
+        }
+        
+        passwordTextField.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(useridTextField.snp.bottom).offset(20)
+            $0.width.equalTo(300)
+            $0.height.equalTo(40)
+        }
+        
+        signupButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(30)
+            $0.width.equalTo(120)
+            $0.height.equalTo(40)
+        }
+        
+        cancelButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(signupButton.snp.bottom).offset(10)
+            $0.width.equalTo(120)
+            $0.height.equalTo(40)
+        }
     }
 
     @objc private func signupTapped() {
         // 유효성검사 해야 함
+        guard let username = usernameTextField.text, !username.isEmpty,
+              let userbirth = userbirthTextField.text, !userbirth.isEmpty,
+              let userid = useridTextField.text, !userid.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty else {
+            // 유효성 검사 실패
+            print("모든 필드를 채워주세요.")
+            return
+        }
+        // UserDefaults에 정보 저장
+        UserDefaults.standard.set(userid, forKey: "userid")
+        UserDefaults.standard.set(password, forKey: "password")
+        UserDefaults.standard.set(username, forKey: "username")
+        UserDefaults.standard.set(userbirth, forKey: "userbirth")
+        UserDefaults.standard.synchronize()
+        
+        print("회원 가입 완료")
+
+        dismiss(animated: true, completion: nil)
     }
 
     @objc private func cancelTapped() {

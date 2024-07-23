@@ -16,10 +16,9 @@ class ViewController: UIViewController {
     
     view.backgroundColor = UIColor(red: 255/255, green: 249/255, blue: 208/255, alpha: 1.0)
 
-    view.addSubview(idTextField)
-    view.addSubview(pwTextField)
-    view.addSubview(loginButton)
-    view.addSubview(signupButton)
+      
+    [logoImageView, idTextField, pwTextField, loginButton, signupButton]
+                  .forEach { view.addSubview($0) }
 
     setupLayout()
     
@@ -29,6 +28,12 @@ class ViewController: UIViewController {
 
     
     // 로고 이미지 넣기
+    private let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "logo")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
     
     private let idTextField: UITextField = {
         let textField = UITextField()
@@ -67,37 +72,52 @@ class ViewController: UIViewController {
 
 
     private func setupLayout() {
-        idTextField.translatesAutoresizingMaskIntoConstraints = false
-        pwTextField.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        signupButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        logoImageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
+            $0.width.equalTo(300)
+            $0.height.equalTo(300)
+        }
+        
+        idTextField.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(logoImageView.snp.bottom).offset(10)
+            $0.width.equalTo(300)
+            $0.height.equalTo(40)
+        }
+        
+        pwTextField.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(idTextField.snp.bottom).offset(20)
+            $0.width.equalTo(300)
+            $0.height.equalTo(40)
+        }
 
-        NSLayoutConstraint.activate([
-            idTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            idTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60),
-            idTextField.widthAnchor.constraint(equalToConstant: 300),
-            idTextField.heightAnchor.constraint(equalToConstant: 40),
+        loginButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(pwTextField.snp.bottom).offset(40)
+            $0.width.equalTo(120)
+            $0.height.equalTo(40)
+        }
+        
+        signupButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(loginButton.snp.bottom).offset(10)
+            $0.width.equalTo(120)
+            $0.height.equalTo(40)
+        }
 
-            pwTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            pwTextField.topAnchor.constraint(equalTo: idTextField.bottomAnchor, constant: 20),
-            pwTextField.widthAnchor.constraint(equalToConstant: 300),
-            pwTextField.heightAnchor.constraint(equalToConstant: 40),
-
-            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginButton.topAnchor.constraint(equalTo: pwTextField.bottomAnchor, constant: 40),
-            loginButton.widthAnchor.constraint(equalToConstant: 120),
-            loginButton.heightAnchor.constraint(equalToConstant: 40),
-
-            signupButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            signupButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 10),
-            signupButton.widthAnchor.constraint(equalToConstant: 120),
-            signupButton.heightAnchor.constraint(equalToConstant: 40)
-        ])
     }
 
     @objc private func loginTapped() {
         // 로그인 로직 구현
-        
+        if let savedUserId = UserDefaults.standard.string(forKey: "userid"),
+           let savedPassword = UserDefaults.standard.string(forKey: "password"),
+           savedUserId == idTextField.text,
+           savedPassword == pwTextField.text {
+            // 메인 화면으로 넘어가야 함
+        }
     }
 
     @objc private func signupTapped() {
