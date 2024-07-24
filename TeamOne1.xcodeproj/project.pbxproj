@@ -82,8 +82,6 @@
 		9F4CB9432C4DF9B000D4847F /* TeamOne1 */ = {
 			isa = PBXGroup;
 			children = (
-				9F4CB9442C4DF9B000D4847F /* AppDelegate.swift */,
-				9F4CB9462C4DF9B000D4847F /* SceneDelegate.swift */,
 				9F4CB95F2C4E5DAD00D4847F /* Controller */,
 				9F4CB95E2C4E5D9600D4847F /* Model */,
 				9F4CB95D2C4E5D7500D4847F /* View */,
@@ -91,6 +89,8 @@
 				9F4CB94F2C4DF9B100D4847F /* LaunchScreen.storyboard */,
 				9F4CB9522C4DF9B100D4847F /* Info.plist */,
 				9F4CB94A2C4DF9B000D4847F /* TeamOne1.xcdatamodeld */,
+				9F4CB9442C4DF9B000D4847F /* AppDelegate.swift */,
+				9F4CB9462C4DF9B000D4847F /* SceneDelegate.swift */,
 			);
 			path = TeamOne1;
 			sourceTree = "<group>";
@@ -98,9 +98,8 @@
 		9F4CB95D2C4E5D7500D4847F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9F527DC82C5131B30059F288 /* LoginView */,
 				9F4CB9582C4E3C0100D4847F /* MovieDetailView.swift */,
-				9F4CB98C2C4ED9FC00D4847F /* LoginView.swift */,
-				9F4CB98A2C4ED9E400D4847F /* SignUPView.swift */,
 				4586EE5F2C4FBB5700FEBFF7 /* MovieListView.swift */,
 			);
 			path = View;
@@ -119,13 +118,30 @@
 		9F4CB95F2C4E5DAD00D4847F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				566D85F52C4E3BF300D59102 /* SignupViewController.swift */,
-				9F4CB9482C4DF9B000D4847F /* LoginViewController.swift */,
+				9F527DC72C5131A50059F288 /* LoginViewController */,
 				9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */,
 				4586EE5D2C4FBB3700FEBFF7 /* MovieListViewController.swift */,
 				56A865092C508C9A00A9E982 /* MainTabBarViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9F527DC72C5131A50059F288 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				566D85F52C4E3BF300D59102 /* SignupViewController.swift */,
+				9F4CB9482C4DF9B000D4847F /* LoginViewController.swift */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		9F527DC82C5131B30059F288 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				9F4CB98C2C4ED9FC00D4847F /* LoginView.swift */,
+				9F4CB98A2C4ED9E400D4847F /* SignUPView.swift */,
+			);
+			path = LoginView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
