@@ -10,9 +10,8 @@ import SnapKit
 
 class MovieListView: UIView {
   
-  
-  
-  
+  weak var movieListViewController: MovieListViewController?
+
   let tableView = UITableView()
   let titles = ["개봉 예정 영화", "상영중인 영화", "인기순위"]
   override init(frame: CGRect) {
@@ -56,7 +55,7 @@ extension MovieListView: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: MvListTableViewCell.id, for: indexPath) as! MvListTableViewCell
     cell.titleLabel.text = titles[indexPath.row] // 타이틀 설정
-    
+    cell.listViewController = movieListViewController ////////////222
     // 각 행에 맞는 데이터를 전달
     if indexPath.row == 0 {
       cell.updateCollectionView(with: NetworkController.upcomingMovies)

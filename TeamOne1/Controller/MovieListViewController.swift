@@ -11,13 +11,17 @@ import SnapKit
 class MovieListViewController: UIViewController {
   
   let movieListView = MovieListView()
-  // 각 행의 타이틀 배열
+  
   let network = NetworkController()
   
-  
+  /* naigation controller 적극활용
+   */
   override func viewDidLoad() {
     super.viewDidLoad()
     setupMovieList()
+    
+    movieListView.movieListViewController = self
+    
     Task {
       await network.fetchUpcomingMovies()
       movieListView.tableView.reloadData()
@@ -31,6 +35,7 @@ class MovieListViewController: UIViewController {
     movieListView.snp.makeConstraints {
       $0.edges.equalToSuperview()
     }
+    
   }
   
   

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class MovieDetailViewController: UIViewController{
+class MovieDetailViewController: UIViewController{
   let movieDetailView = MovieDetailView()
   override func viewDidLoad() {
     super.viewDidLoad()

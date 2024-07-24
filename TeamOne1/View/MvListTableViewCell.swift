@@ -9,9 +9,14 @@ import UIKit
 import SnapKit
 
 class MvListTableViewCell: UITableViewCell {
+  
   static let id = "MvListTableViewCell"
   
+  weak var listViewController: MovieListViewController? 
+  // 11111
   let collectionView: UICollectionView
+  
+  
   let titleLabel: UILabel = {
     let lb = UILabel()
     lb.font = UIFont.boldSystemFont(ofSize: 25)
@@ -38,14 +43,14 @@ class MvListTableViewCell: UITableViewCell {
     contentView.addSubview(titleLabel)
     contentView.addSubview(collectionView)
     
-    titleLabel.snp.makeConstraints { make in
-      make.top.left.right.equalToSuperview().inset(10)
+    titleLabel.snp.makeConstraints {
+      $0.top.left.right.equalToSuperview().inset(10)
     }
     
-    collectionView.snp.makeConstraints { make in
-      make.top.equalTo(titleLabel.snp.bottom).offset(10)
-      make.left.right.bottom.equalToSuperview().inset(10)
-      make.height.equalTo(150) // 높이를 고정하여 스크롤 문제가 발생하지 않도록 설정
+    collectionView.snp.makeConstraints {
+      $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+      $0.left.right.bottom.equalToSuperview().inset(10)
+      $0.height.equalTo(150) // 높이를 고정하여 스크롤 문제가 발생하지 않도록 설정
     }
     
     collectionView.dataSource = self
@@ -63,7 +68,7 @@ class MvListTableViewCell: UITableViewCell {
 
 extension MvListTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return movies.count
+    return NetworkController.upcomingMovies.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -71,5 +76,12 @@ extension MvListTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
     let movie = movies[indexPath.item]
     cell.configure(with: movie)
     return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+
+    listViewController?.present(MovieDetailViewController(), animated: true)
+  
   }
 }

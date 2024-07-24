@@ -85,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				9F4CB95F2C4E5DAD00D4847F /* Controller */,
-				9F527DC92C51358B0059F288 /* NetworkController.swift */,
 				9F4CB95E2C4E5D9600D4847F /* Model */,
 				9F4CB95D2C4E5D7500D4847F /* View */,
 				9F4CB94D2C4DF9B100D4847F /* Assets.xcassets */,
@@ -121,10 +120,10 @@
 		9F4CB95F2C4E5DAD00D4847F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9F527DC92C51358B0059F288 /* NetworkController.swift */,
 				9F527DC72C5131A50059F288 /* LoginViewController */,
 				9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */,
 				4586EE5D2C4FBB3700FEBFF7 /* MovieListViewController.swift */,
-				56A865092C508C9A00A9E982 /* MainTabBarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -132,6 +131,7 @@
 		9F527DC72C5131A50059F288 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
+				56A865092C508C9A00A9E982 /* MainTabBarViewController.swift */,
 				566D85F52C4E3BF300D59102 /* SignupViewController.swift */,
 				9F4CB9482C4DF9B000D4847F /* LoginViewController.swift */,
 			);

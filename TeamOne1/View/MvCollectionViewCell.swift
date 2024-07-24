@@ -29,6 +29,8 @@ class MvCollectionViewCell: UICollectionViewCell {
     return lb
   }()
   
+  
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     [
@@ -52,6 +54,7 @@ class MvCollectionViewCell: UICollectionViewCell {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+  
   func configure(with movie: UpcomingModel) {
     titleLabel.text = movie.title
     if let posterPath = movie.posterPath {
