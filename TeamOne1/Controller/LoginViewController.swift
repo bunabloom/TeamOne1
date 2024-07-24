@@ -27,9 +27,6 @@ class LoginViewController: UIViewController {
   func configureAddTarget(){
     loginView.signupButton.addTarget(self, action: #selector(signupTapped), for: .touchDown)
     loginView.loginButton.addTarget(self, action: #selector(loginTapped), for: .touchDown)
-      
-    // test용 버튼 나중에 꼭 지울것!
-      loginView.testButton.addTarget(self, action: #selector(testbt), for: .touchUpInside)
   }
 
 
@@ -42,15 +39,17 @@ class LoginViewController: UIViewController {
         }
         
         if let userDict = UserDefaults.standard.dictionary(forKey: userid) as? [String: String],
-           userDict["password"] == password {
-            showAlert(message: "로그인 성공", completion: {
-                        // 로그인 성공 시 메인화면 전환
-            })
-        } else {
-            showAlert(message: "아이디 또는 비밀번호가 잘못되었습니다.")
-        }
-   
-    }
+               userDict["password"] == password {
+              showAlert(message: "로그인 성공") {
+                // 로그인 성공 시 메인화면 전환
+                let tabBarController = MainTabBarViewController()
+                tabBarController.modalPresentationStyle = .fullScreen
+                self.present(tabBarController, animated: true, completion: nil)
+              }
+            } else {
+              showAlert(message: "아이디 또는 비밀번호가 잘못되었습니다.")
+            }
+          }
 
     @objc private func signupTapped() {
         let signupViewController = SignupViewController()
@@ -64,10 +63,5 @@ class LoginViewController: UIViewController {
             completion?()
         })
         present(alert, animated: true, completion: nil)
-    }
-    
-    // 테스트용 버튼 나중에 꼭 지울것
-    @objc private func testbt() {
-        self.navigationController?.pushViewController(MovieListViewController(), animated: true)
     }
 }
