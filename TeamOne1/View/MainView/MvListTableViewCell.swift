@@ -12,8 +12,12 @@ class MvListTableViewCell: UITableViewCell {
   
   static let id = "MvListTableViewCell"
   
-  weak var listViewController: MovieListViewController? 
+  weak var listViewController: MovieListViewController?
   // 11111
+  
+  // var ss : Int
+  // var xx : Int
+  //
   let collectionView: UICollectionView
   
   
