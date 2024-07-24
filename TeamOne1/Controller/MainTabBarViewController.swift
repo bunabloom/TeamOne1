@@ -8,21 +8,65 @@
 import UIKit
 import SnapKit
 
-
 class MainTabBarViewController: UIViewController {
 
+    private let logoView = UIView()
+    private let logoImageView = UIImageView()
     private let customTabBar = UITabBar()
     private var viewControllers: [UIViewController] = []
-    private let selectionIndicator = UIView()  // 인디케이터 뷰
+    private let selectionIndicator = UIView()
+    
+    private let welcomeUser: UILabel = {
+        let lb = UILabel()
+        lb.text = "돌아오신것을 환영합니다!"
+        lb.textAlignment = .right
+        lb.textColor = .black
+        lb.font = .boldSystemFont(ofSize: 14)
+        return lb
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .white
+        
+        setupLogoView()
         setupViewControllers()
         setupCustomTabBar()
         setupConstraints()
         setupSelectionIndicator()
-        selectViewController(at: 0) // 첫번째 탭 기본설정
+        selectViewController(at: 0)
+    }
+    
+    private func setupLogoView() {
+        logoView.backgroundColor = .white
+        view.addSubview(logoView)
+        view.addSubview(welcomeUser)
+        
+        // 로고 이미지 설정
+        logoImageView.image = UIImage(named: "GGV") // 로고 이미지 설정
+        logoImageView.contentMode = .scaleAspectFill
+        logoView.addSubview(logoImageView)
+        
+        // 로고 뷰 제약 조건 설정
+        logoView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(50) // 로고 뷰 높이
+        }
+        
+        // 로고 이미지 뷰 제약 조건 설정
+        logoImageView.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(15)
+            $0.bottom.equalToSuperview().offset(-5)
+            $0.height.equalTo(40)
+            $0.width.equalTo(55)
+        }
+        
+        welcomeUser.snp.makeConstraints {
+            $0.trailing.equalToSuperview().offset(-10)
+            $0.bottom.equalTo(logoView.snp.bottom).offset(-10) // 여백 추가
+        }
     }
 
     private func setupViewControllers() {
@@ -41,34 +85,47 @@ class MainTabBarViewController: UIViewController {
         customTabBar.items = viewControllers.map { $0.tabBarItem }
         customTabBar.selectedItem = customTabBar.items?.first
         customTabBar.delegate = self
-        customTabBar.tintColor = .blue
-        customTabBar.unselectedItemTintColor = .gray
-        customTabBar.clipsToBounds = true
-        customTabBar.backgroundColor = .white
+        customTabBar.tintColor = .white
+        customTabBar.unselectedItemTintColor = .white
+        customTabBar.clipsToBounds = false
+
+         // 탭바 배경색 설정
+         customTabBar.backgroundImage = UIImage()
+        customTabBar.backgroundColor = .blue
+
+        
+        customTabBar.layer.shadowColor = UIColor.black.cgColor
+        customTabBar.layer.shadowOpacity = 0.3
+        customTabBar.layer.shadowOffset = CGSize(width: 0, height: 3)
+        customTabBar.layer.shadowRadius = 6
+
 
         let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 16),
-            .foregroundColor: UIColor.blue
+            .font: UIFont.boldSystemFont(ofSize: 18),
+            .foregroundColor: UIColor.white
         ]
         UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .selected)
         
-        let positionAdjustment = UIOffset(horizontal: 0, vertical: -25) // 수직 위치 조정
+        let positionAdjustment = UIOffset(horizontal: 0, vertical: -15) // 수직 위치 조정
         UITabBarItem.appearance().titlePositionAdjustment = positionAdjustment
         
         view.addSubview(customTabBar)
     }
 
     private func setupConstraints() {
+
+        // 탭바 제약 조건
         customTabBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
-            $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(70)
+            $0.top.equalTo(logoView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(55)
         }
     }
     
     private func setupSelectionIndicator() {
-        selectionIndicator.backgroundColor = .blue
+        selectionIndicator.backgroundColor = .white
+        selectionIndicator.layer.cornerRadius = 1.5
         selectionIndicator.clipsToBounds = true
         
         customTabBar.addSubview(selectionIndicator)
@@ -83,7 +140,7 @@ class MainTabBarViewController: UIViewController {
         
         let tabBarWidth = customTabBar.bounds.width
         let itemWidth = tabBarWidth / CGFloat(customTabBar.items!.count)
-        let xPosition = itemWidth * CGFloat(index) // x좌표계산해서 밑줄위치 배치
+        let xPosition = itemWidth * CGFloat(index)
         
         selectionIndicator.snp.remakeConstraints {
             $0.bottom.equalTo(customTabBar.snp.bottom) // TabBar의 bottom에 맞추기
@@ -94,7 +151,6 @@ class MainTabBarViewController: UIViewController {
         view.layoutIfNeeded()
     }
 
-    // 인덱스에 해당하는 탭바 항목 뷰컨 화면에 표시하고 나머지 항목 뷰컨 숨기기(부모뷰 하위뷰)
     private func selectViewController(at index: Int) {
         for (i, vc) in viewControllers.enumerated() {
             if i == index {
@@ -102,6 +158,11 @@ class MainTabBarViewController: UIViewController {
                 vc.view.frame = view.bounds
                 view.insertSubview(vc.view, belowSubview: customTabBar)
                 vc.didMove(toParent: self)
+                
+                vc.view.snp.makeConstraints {
+                    $0.top.equalTo(customTabBar.snp.bottom)
+                    $0.leading.trailing.bottom.equalToSuperview()
+                }
             } else {
                 vc.willMove(toParent: nil)
                 vc.view.removeFromSuperview()
@@ -113,7 +174,6 @@ class MainTabBarViewController: UIViewController {
     }
 }
 
-
 extension MainTabBarViewController: UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if let index = tabBar.items?.firstIndex(of: item) {
@@ -121,5 +181,3 @@ extension MainTabBarViewController: UITabBarDelegate {
         }
     }
 }
-
-
