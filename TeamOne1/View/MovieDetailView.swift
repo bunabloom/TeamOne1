@@ -76,7 +76,7 @@ final class MovieDetailView: UIView {
   
   
   
-  func configureUI(){
+  private func configureUI(){
     
     [
       imgLabel,

@@ -23,6 +23,7 @@ class MvCollectionViewCell: UICollectionViewCell {
         
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 15
         
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.systemFont(ofSize: 12)
