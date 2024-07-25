@@ -78,7 +78,7 @@ class MainTabBarViewController: UIViewController {
 
     private func setupViewControllers() {
         let movieListVC = MovieListViewController()
-        let searchVC = UIViewController()
+        let searchVC = MovieSearchViewController()
         let myPageVC = MyPageViewController()
 
         movieListVC.tabBarItem = UITabBarItem(title: "영화 목록", image: nil, tag: 0)
