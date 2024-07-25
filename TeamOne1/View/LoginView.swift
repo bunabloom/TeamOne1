@@ -9,10 +9,9 @@ import UIKit
 
 final class LoginView: UIView {
     
-    
   private let logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "logo")
+        imageView.image = UIImage(named: "GGV")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -35,7 +34,7 @@ final class LoginView: UIView {
   let loginButton: UIButton = {
       let button = UIButton(type: .system)
       button.setTitle("Login", for: .normal)
-      button.backgroundColor = UIColor(red: 53/255, green: 114/255, blue: 239/255, alpha: 1.0)
+      button.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0)
       button.setTitleColor(.white, for: .normal)
       button.layer.cornerRadius = 5
       
@@ -45,7 +44,7 @@ final class LoginView: UIView {
   let signupButton: UIButton = {
       let button = UIButton(type: .system)
       button.setTitle("Sign Up", for: .normal)
-      button.setTitleColor(UIColor(red: 53/255, green: 114/255, blue: 239/255, alpha: 1.0), for: .normal)
+      button.setTitleColor(UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0), for: .normal)
       
       return button
   }()
@@ -61,13 +60,13 @@ final class LoginView: UIView {
   
 
   private func configureUI() {
-    self.backgroundColor = UIColor(red: 255/255, green: 249/255, blue: 208/255, alpha: 1.0)
+      self.backgroundColor = .white
     [
       logoImageView,
       idTextField,
       pwTextField,
       loginButton,
-      signupButton,
+      signupButton
     ].forEach{addSubview($0)}
     
     logoImageView.snp.makeConstraints {
@@ -101,8 +100,11 @@ final class LoginView: UIView {
       $0.width.equalTo(loginButton)
       $0.height.equalTo(loginButton)
     }
-      
+    
+    
+    
 
       
   }
 }
+
