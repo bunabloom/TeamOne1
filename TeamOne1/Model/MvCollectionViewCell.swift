@@ -6,59 +6,58 @@
 //
 
 import UIKit
-import SnapKit
 import Kingfisher
+import SnapKit
 
 class MvCollectionViewCell: UICollectionViewCell {
-  
-  static let id = "MvCollectionViewCell"
-  
-  let imageView: UIImageView = {
-    let iv = UIImageView()
-    iv.contentMode = .scaleAspectFit
-    iv.clipsToBounds = true
-    return iv
-  }()
-  
-  let titleLabel: UILabel = {
-    let lb = UILabel()
-    lb.text = "범죄도시4"
-    lb.textAlignment = .center
-    lb.font = .boldSystemFont(ofSize: 13)
-    lb.textColor = .black
-    return lb
-  }()
-  
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    [
-      imageView,
-      titleLabel].forEach{ contentView.addSubview($0) }
+    static let id = "MvCollectionViewCell"
     
-    imageView.snp.makeConstraints {
-      $0.centerX.equalToSuperview()
-      $0.top.trailing.leading.equalToSuperview()
-      //$0.height.equalTo(contentView.snp.width)
+    let imageView = UIImageView()
+    let titleLabel = UILabel()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        contentView.addSubview(imageView)
+        contentView.addSubview(titleLabel)
+        
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont.systemFont(ofSize: 12)
+        titleLabel.numberOfLines = 2
+        
+        setupConstraints()
     }
     
-    titleLabel.snp.makeConstraints {
-      $0.top.equalTo(imageView.snp.bottom).offset(3)
-      $0.centerX.equalToSuperview()
-      $0.bottom.equalToSuperview()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  func configure(with movie: UpcomingModel) {
-    titleLabel.text = movie.title
-    if let posterPath = movie.posterPath {
-      let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
-      imageView.kf.setImage(with: url)
+    private func setupConstraints() {
+        imageView.snp.makeConstraints {
+            $0.top.equalTo(contentView)
+            $0.leading.equalTo(contentView)
+            $0.trailing.equalTo(contentView)
+            $0.height.equalTo(contentView.snp.width).multipliedBy(1.5)
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(imageView.snp.bottom).offset(5)
+            $0.leading.equalTo(contentView).offset(5)
+            $0.trailing.equalTo(contentView).offset(-5)
+            $0.bottom.equalTo(contentView).offset(-5)
+        }
     }
-  }
+    
+    func configure(with movie: MovieListModel) {
+        if let posterPath = movie.posterPath {
+            let url = URL(string: "https://image.tmdb.org/t/p/w500" + posterPath)
+            imageView.kf.setImage(with: url)
+        } else {
+            imageView.image = nil
+        }
+        titleLabel.text = movie.title
+    }
 }
-
-

@@ -24,7 +24,7 @@
 		9F4CB98B2C4ED9E400D4847F /* SignUPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB98A2C4ED9E400D4847F /* SignUPView.swift */; };
 		9F4CB98D2C4ED9FC00D4847F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB98C2C4ED9FC00D4847F /* LoginView.swift */; };
 		9F4CB98F2C4EE8C000D4847F /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */; };
-		E2237E0E2C50C6C20006EF2A /* UpcomingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2237E0D2C50C6C20006EF2A /* UpcomingModel.swift */; };
+		E2237E0E2C50C6C20006EF2A /* MovieListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2237E0D2C50C6C20006EF2A /* MovieListModel.swift */; };
 		E2237E112C50C8AB0006EF2A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E2237E102C50C8AB0006EF2A /* Kingfisher */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +47,7 @@
 		9F4CB98A2C4ED9E400D4847F /* SignUPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPView.swift; sourceTree = "<group>"; };
 		9F4CB98C2C4ED9FC00D4847F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
-		E2237E0D2C50C6C20006EF2A /* UpcomingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingModel.swift; sourceTree = "<group>"; };
+		E2237E0D2C50C6C20006EF2A /* MovieListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +111,7 @@
 			children = (
 				4586EE592C4FBADE00FEBFF7 /* MvListTableViewCell.swift */,
 				4586EE5B2C4FBB0C00FEBFF7 /* MvCollectionViewCell.swift */,
-				E2237E0D2C50C6C20006EF2A /* UpcomingModel.swift */,
+				E2237E0D2C50C6C20006EF2A /* MovieListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,7 +212,7 @@
 				56A8650A2C508C9A00A9E982 /* MainTabBarViewController.swift in Sources */,
 				4586EE5E2C4FBB3700FEBFF7 /* MovieListViewController.swift in Sources */,
 				9F4CB9492C4DF9B000D4847F /* LoginViewController.swift in Sources */,
-				E2237E0E2C50C6C20006EF2A /* UpcomingModel.swift in Sources */,
+				E2237E0E2C50C6C20006EF2A /* MovieListModel.swift in Sources */,
 				9F4CB9452C4DF9B000D4847F /* AppDelegate.swift in Sources */,
 				9F4CB9472C4DF9B000D4847F /* SceneDelegate.swift in Sources */,
 				9F4CB98B2C4ED9E400D4847F /* SignUPView.swift in Sources */,
