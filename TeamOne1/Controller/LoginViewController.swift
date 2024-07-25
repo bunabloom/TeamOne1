@@ -40,6 +40,8 @@ class LoginViewController: UIViewController {
         
         if let userDict = UserDefaults.standard.dictionary(forKey: userid) as? [String: String],
                userDict["password"] == password {
+            // 로그인 성공 시 아이디 저장
+            UserDefaults.standard.set(userid, forKey: "loggedInUserID")
               showAlert(message: "로그인 성공") {
                 // 로그인 성공 시 메인화면 전환
                 let tabBarController = MainTabBarViewController()

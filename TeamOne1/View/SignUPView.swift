@@ -17,6 +17,13 @@ class SignUPView: UIView {
       label.textAlignment = .center
       return label
   }()
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "이름"
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        return label
+    }()
   
   let usernameTextField: UITextField = {
       let textField = UITextField()
@@ -24,6 +31,13 @@ class SignUPView: UIView {
       textField.borderStyle = .roundedRect
       return textField
   }()
+    
+    let birthLabel: UILabel = {
+        let label = UILabel()
+        label.text = "생년월일"
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        return label
+    }()
   
   let userbirthTextField: UITextField = {
       let textField = UITextField()
@@ -31,6 +45,13 @@ class SignUPView: UIView {
       textField.borderStyle = .roundedRect
       return textField
   }()
+    
+    let idLabel: UILabel = {
+        let label = UILabel()
+        label.text = "아이디"
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        return label
+    }()
   
   let useridTextField: UITextField = {
       let textField = UITextField()
@@ -38,6 +59,13 @@ class SignUPView: UIView {
       textField.borderStyle = .roundedRect
       return textField
   }()
+    
+    let pwLabel: UILabel = {
+        let label = UILabel()
+        label.text = "비밀번호"
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        return label
+    }()
 
   let passwordTextField: UITextField = {
       let textField = UITextField()
@@ -51,7 +79,7 @@ class SignUPView: UIView {
  lazy var signupButton: UIButton = {
       let button = UIButton(type: .system)
       button.setTitle("Sign Up", for: .normal)
-      button.backgroundColor = .systemBlue
+      button.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0)
       button.setTitleColor(.white, for: .normal)
       button.layer.cornerRadius = 5
 
@@ -77,13 +105,17 @@ class SignUPView: UIView {
   
   private func setupLayout() {
       
-      self.backgroundColor = UIColor(red: 255/255, green: 249/255, blue: 208/255, alpha: 1.0)
+      self.backgroundColor = .white
     
     [
       titleLabel,
+      nameLabel,
       usernameTextField,
+      birthLabel,
       userbirthTextField,
+      idLabel,
       useridTextField,
+      pwLabel,
       passwordTextField,
       signupButton,
       cancelButton
@@ -97,28 +129,50 @@ class SignUPView: UIView {
       $0.width.equalTo(300)
       $0.height.equalTo(40)
     }
+      
+      nameLabel.snp.makeConstraints {
+          $0.bottom.equalTo(usernameTextField.snp.top)
+          $0.leading.equalTo(usernameTextField.snp.leading)
+      }
 
     usernameTextField.snp.makeConstraints{
+      $0.top.equalTo(titleLabel.snp.bottom).offset(90)
+      $0.centerX.equalTo(safeAreaLayoutGuide)
+      $0.width.equalTo(300)
+      $0.height.equalTo(40)
+    }
       
-      $0.top.equalTo(titleLabel.snp.bottom).offset(50)
-      $0.centerX.equalTo(safeAreaLayoutGuide)
-      $0.width.equalTo(300)
-      $0.height.equalTo(40)
-    }
+      birthLabel.snp.makeConstraints {
+          $0.top.equalTo(usernameTextField.snp.bottom).offset(20)
+          $0.leading.equalTo(usernameTextField.snp.leading)
+      }
+      
     userbirthTextField.snp.makeConstraints{
-      $0.top.equalTo(usernameTextField.snp.bottom).offset(20)
+      $0.top.equalTo(birthLabel.snp.bottom)
       $0.centerX.equalTo(safeAreaLayoutGuide)
       $0.width.equalTo(300)
       $0.height.equalTo(40)
     }
+      
+      idLabel.snp.makeConstraints {
+          $0.top.equalTo(userbirthTextField.snp.bottom).offset(20)
+          $0.leading.equalTo(usernameTextField.snp.leading)
+      }
+      
     useridTextField.snp.makeConstraints{
-      $0.top.equalTo(userbirthTextField.snp.bottom).offset(20)
+      $0.top.equalTo(idLabel.snp.bottom)
       $0.centerX.equalTo(safeAreaLayoutGuide)
       $0.width.equalTo(300)
       $0.height.equalTo(40)
     }
+      
+      pwLabel.snp.makeConstraints {
+          $0.top.equalTo(useridTextField.snp.bottom).offset(20)
+          $0.leading.equalTo(usernameTextField.snp.leading)
+      }
+      
     passwordTextField.snp.makeConstraints{
-      $0.top.equalTo(useridTextField.snp.bottom).offset(20)
+      $0.top.equalTo(pwLabel.snp.bottom)
       $0.centerX.equalTo(safeAreaLayoutGuide)
       $0.width.equalTo(300)
       $0.height.equalTo(40)
@@ -138,3 +192,4 @@ class SignUPView: UIView {
     
   }
 }
+
