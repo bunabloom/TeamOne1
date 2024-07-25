@@ -10,7 +10,7 @@ import SnapKit
 
 class MovieListView: UIView {
     
-    
+  weak var movieListViewController: MovieListViewController?
     lazy var tableView = UITableView()
     
     override init(frame: CGRect) {
