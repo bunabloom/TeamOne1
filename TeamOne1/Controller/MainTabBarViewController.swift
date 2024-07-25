@@ -18,7 +18,6 @@ class MainTabBarViewController: UIViewController {
     
     private let welcomeUser: UILabel = {
         let lb = UILabel()
-        lb.text = "돌아오신것을 환영합니다!"
         lb.textAlignment = .right
         lb.textColor = .black
         lb.font = .boldSystemFont(ofSize: 14)
@@ -31,6 +30,7 @@ class MainTabBarViewController: UIViewController {
         view.backgroundColor = .white
         
         setupLogoView()
+        loadUserInfo()
         setupViewControllers()
         setupCustomTabBar()
         setupConstraints()
@@ -68,11 +68,18 @@ class MainTabBarViewController: UIViewController {
             $0.bottom.equalTo(logoView.snp.bottom).offset(-10) // 여백 추가
         }
     }
+    
+    func loadUserInfo() {
+        if let userid = UserDefaults.standard.string(forKey: "loggedInUserID"),
+           let userDict = UserDefaults.standard.dictionary(forKey: userid) as? [String: String] {
+            welcomeUser.text = "\(userDict["userid"] ?? "아이디")님 반갑습니다."
+        }
+    }
 
     private func setupViewControllers() {
         let movieListVC = MovieListViewController()
         let searchVC = UIViewController()
-        let myPageVC = UIViewController()
+        let myPageVC = MyPageViewController()
 
         movieListVC.tabBarItem = UITabBarItem(title: "영화 목록", image: nil, tag: 0)
         searchVC.tabBarItem = UITabBarItem(title: "영화 검색", image: nil, tag: 1)
@@ -91,7 +98,7 @@ class MainTabBarViewController: UIViewController {
 
          // 탭바 배경색 설정
          customTabBar.backgroundImage = UIImage()
-        customTabBar.backgroundColor = .blue
+        customTabBar.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0)
 
         
         customTabBar.layer.shadowColor = UIColor.black.cgColor
