@@ -8,10 +8,10 @@
 import Foundation
 
 struct MovieResponse: Codable {
-  let results: [UpcomingModel]
+  let results: [MovieListModel]
 }
 
-struct UpcomingModel: Codable {
+struct MovieListModel: Codable {
   let title: String
   let posterPath: String?
   
