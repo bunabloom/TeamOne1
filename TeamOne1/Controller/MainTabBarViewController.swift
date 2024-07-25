@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MainTabBarViewController: UIViewController {
+final class MainTabBarViewController: UIViewController {
 
     private let logoView = UIView()
     private let logoImageView = UIImageView()

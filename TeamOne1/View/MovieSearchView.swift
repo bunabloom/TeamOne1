@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MovieSearchView: UIView {
+final class MovieSearchView: UIView {
     
     // 검색 상자
     let searchBar = UISearchBar()

@@ -11,12 +11,19 @@ struct MovieResponse: Codable {
   let results: [MovieListModel]
 }
 
+enum MovieType: Codable {
+    case nowPlaying
+    case upComing
+}
+
 struct MovieListModel: Codable {
-  let title: String
-  let posterPath: String?
+    let title: String
+    let posterPath: String?
+    let type: MovieType
   
   enum CodingKeys: String, CodingKey {
     case title
     case posterPath = "poster_path"
+    case type
   }
 }

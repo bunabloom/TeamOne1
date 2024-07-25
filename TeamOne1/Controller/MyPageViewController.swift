@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MyPageViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+final class MyPageViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     // 사용자 프로필 이미지 뷰
     let profileImageView: UIImageView = {

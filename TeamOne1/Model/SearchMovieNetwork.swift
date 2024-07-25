@@ -13,7 +13,7 @@ struct Constants {
     static let nowPlayingURL = "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)&language=ko-KR&page=1&region=KR"
 }
 
-class SearchMovieNetwork {
+final class SearchMovieNetwork {
     
     static let shared = SearchMovieNetwork() // 싱글톤 패턴
     

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MovieListViewController: UIViewController {
+final class MovieListViewController: UIViewController {
     
     let movieListView = MovieListView()
     let titles = ["개봉 예정 영화", "상영중인 영화", "인기순위"] // 각 행의 타이틀 배열

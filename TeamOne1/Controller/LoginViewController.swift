@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
 
   
   let loginView = LoginView()
@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
   }
 
   
-  func configureAddTarget(){
+  private func configureAddTarget(){
     loginView.signupButton.addTarget(self, action: #selector(signupTapped), for: .touchDown)
     loginView.loginButton.addTarget(self, action: #selector(loginTapped), for: .touchDown)
   }

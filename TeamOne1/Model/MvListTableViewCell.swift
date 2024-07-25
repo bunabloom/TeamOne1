@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MvListTableViewCell: UITableViewCell {
+final class MvListTableViewCell: UITableViewCell {
     static let id = "MvListTableViewCell"
   weak var movieListViewController: MovieListViewController?
     let collectionView: UICollectionView

@@ -76,8 +76,8 @@ final class MovieDetailView: UIView {
   
   
   
-  func configureUI(){
-    
+  private func configureUI(){
+    self.backgroundColor = .white
     [
       imgLabel,
       nameLabel,
@@ -96,6 +96,8 @@ final class MovieDetailView: UIView {
     dsView.snp.makeConstraints{
       $0.edges.equalTo(movieDescription)
     }
+    
+    
     
     imgLabel.snp.makeConstraints{
       $0.centerX.equalTo(safeAreaLayoutGuide)
