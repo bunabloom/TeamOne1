@@ -16,14 +16,14 @@ final class LoginView: UIView {
         return imageView
     }()
   
-  let idTextField: UITextField = {
+  lazy var idTextField: UITextField = {
       let textField = UITextField()
       textField.placeholder = "id"
       textField.borderStyle = .roundedRect
       return textField
   }()
   
-  let pwTextField: UITextField = {
+  lazy var pwTextField: UITextField = {
       let textField = UITextField()
       textField.placeholder = "pw"
       textField.borderStyle = .roundedRect
@@ -31,7 +31,7 @@ final class LoginView: UIView {
       return textField
   }()
   
-  let loginButton: UIButton = {
+  lazy var loginButton: UIButton = {
       let button = UIButton(type: .system)
       button.setTitle("Login", for: .normal)
       button.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0)
@@ -41,7 +41,7 @@ final class LoginView: UIView {
       return button
   }()
 
-  let signupButton: UIButton = {
+  lazy var signupButton: UIButton = {
       let button = UIButton(type: .system)
       button.setTitle("Sign Up", for: .normal)
       button.setTitleColor(UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0), for: .normal)
