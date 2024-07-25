@@ -14,6 +14,10 @@ class MovieSearchViewController: UIViewController {
     let movieSearchView = MovieSearchView()
     var movies = [MovieListModel]() // 데이터 저장 배열
     
+    var filteredMoives = [MovieListModel]() // 필터링 된 영화 데이터 저장 배열
+    var isSearching = false // 검색 상태를 나타내는 변수
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchView()
@@ -51,24 +55,34 @@ class MovieSearchViewController: UIViewController {
 }
 
 extension MovieSearchViewController: UISearchBarDelegate {
-    // 검색 기능 구현
+    // 검색기능
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            filteredMoives = movies
+            isSearching = false
+        } else {
+            filteredMoives = movies.filter { $0.title.lowercased().contains(searchText.lowercased()) }
+            isSearching = true
+        }
+        movieSearchView.movieCollectionView.reloadData()
+    }
 }
 
 extension MovieSearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.count
+        return isSearching ? filteredMoives.count : movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! SearchMovieCollectionViewCell
-        let movie = movies[indexPath.item]
+        let movie = isSearching ? filteredMoives[indexPath.item] : movies[indexPath.item]
         cell.ptTitleLabel.text = movie.title
         if let posterPath = movie.posterPath {
             let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
             cell.posterImageView.kf.setImage(with: url)
         } else {
-            cell.posterImageView.image = UIImage(named: "winter")
+            cell.posterImageView.image = UIImage(named: "city")
         }
         return cell
     }
