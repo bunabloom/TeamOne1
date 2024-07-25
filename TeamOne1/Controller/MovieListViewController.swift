@@ -112,7 +112,7 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250 // 셀 높이 조정
+        return 280 // 셀 높이 조정
     }
 }
 
