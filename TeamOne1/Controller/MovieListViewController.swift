@@ -47,13 +47,13 @@ class MovieListViewController: UIViewController {
     }
     
     private func fetchNowPlayingMovies() async {
-        await fetchMovies(from: "https://api.themoviedb.org/3/movie/now_playing", language: "en-US") { movies in
+        await fetchMovies(from: "https://api.themoviedb.org/3/movie/now_playing", language: "ko-KR") { movies in
             self.nowPlayingMovies = movies
         }
     }
     
     private func fetchPopularMovies() async {
-        await fetchMovies(from: "https://api.themoviedb.org/3/movie/popular", language: "en-US") { movies in
+        await fetchMovies(from: "https://api.themoviedb.org/3/movie/popular", language: "ko-KR") { movies in
             self.popularMovies = movies
         }
     }
@@ -112,7 +112,7 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250 // 셀 높이 조정
+        return 280 // 셀 높이 조정
     }
 }
 
