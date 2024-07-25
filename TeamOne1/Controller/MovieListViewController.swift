@@ -47,7 +47,7 @@ class MovieListViewController: UIViewController {
     }
     
     private func fetchNowPlayingMovies() async {
-        await fetchMovies(from: "https://api.themoviedb.org/3/movie/now_playing", language: "ko_KR") { movies in
+        await fetchMovies(from: "https://api.themoviedb.org/3/movie/now_playing", language: "ko-KR") { movies in
             self.nowPlayingMovies = movies
         }
     }
