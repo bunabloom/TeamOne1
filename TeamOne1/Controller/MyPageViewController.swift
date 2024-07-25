@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MyPageViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+final class MyPageViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     // 사용자 프로필 이미지 뷰
     let profileImageView: UIImageView = {
@@ -196,4 +196,6 @@ class MyPageViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: 100)
     }
+  
+
 }
