@@ -10,7 +10,7 @@ import SnapKit
 
 class MvListTableViewCell: UITableViewCell {
     static let id = "MvListTableViewCell"
-    
+  weak var movieListViewController: MovieListViewController?
     let collectionView: UICollectionView
     let titleLabel: UILabel = {
         let lb = UILabel()
@@ -72,4 +72,7 @@ extension MvListTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         cell.configure(with: movie)
         return cell
     }
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    movieListViewController?.present(MovieDetailViewController(), animated: true)
+  }
 }
