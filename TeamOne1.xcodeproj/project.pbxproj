@@ -38,6 +38,7 @@
 		9F4CB98F2C4EE8C000D4847F /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */; };
 		E2237E0E2C50C6C20006EF2A /* MovieListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2237E0D2C50C6C20006EF2A /* MovieListModel.swift */; };
 		E2237E112C50C8AB0006EF2A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E2237E102C50C8AB0006EF2A /* Kingfisher */; };
+		E2F842702C5374D700C49FF1 /* MovieDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8426F2C5374D700C49FF1 /* MovieDetailModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		9F4CB98C2C4ED9FC00D4847F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		E2237E0D2C50C6C20006EF2A /* MovieListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListModel.swift; sourceTree = "<group>"; };
+		E2F8426F2C5374D700C49FF1 /* MovieDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				E2237E0D2C50C6C20006EF2A /* MovieListModel.swift */,
 				4586EE9A2C51E8B500FEBFF7 /* SearchMovieNetwork.swift */,
 				4586EE9C2C51E97100FEBFF7 /* SearchMovieCollectionViewCell.swift */,
+				E2F8426F2C5374D700C49FF1 /* MovieDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				4586EE5A2C4FBADE00FEBFF7 /* MvListTableViewCell.swift in Sources */,
 				9F4CB9592C4E3C0100D4847F /* MovieDetailView.swift in Sources */,
 				566D85F62C4E3BF300D59102 /* SignupViewController.swift in Sources */,
+				E2F842702C5374D700C49FF1 /* MovieDetailModel.swift in Sources */,
 				4586EE9F2C51E99C00FEBFF7 /* MovieSearchViewController.swift in Sources */,
 				56A8650A2C508C9A00A9E982 /* MainTabBarViewController.swift in Sources */,
 				4586EE9D2C51E97100FEBFF7 /* SearchMovieCollectionViewCell.swift in Sources */,
