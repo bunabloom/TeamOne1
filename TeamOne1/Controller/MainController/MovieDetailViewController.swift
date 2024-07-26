@@ -16,6 +16,7 @@ final class MovieDetailViewController: UIViewController{
     super.viewDidLoad()
     configureUI()
     loadData()
+    movieDetailView.TicketingBtn.addTarget(self, action: #selector(changeView), for: .touchDown)
     
     
     
@@ -49,5 +50,9 @@ final class MovieDetailViewController: UIViewController{
       }
       
     }
+  }
+  
+  @objc func changeView(){
+    self.present(BookingViewController(), animated: true)
   }
 }
