@@ -87,8 +87,7 @@ final class MovieListViewController: UIViewController {
   func showMovieDetail(with movie: MovieListModel) {
     let detail = MovieDetailViewController()
     detail.movie = movie
-    detail.modalPresentationStyle = .pageSheet
-    present(detail, animated: true, completion: nil)
+    navigationController?.pushViewController(detail, animated: true)
   }
 }
 

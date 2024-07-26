@@ -10,7 +10,8 @@ import SnapKit
 import Kingfisher
 
 final class MovieSearchViewController: UIViewController {
-    
+   var movieListViewController: MovieListViewController?
+
     let movieSearchView = MovieSearchView() // 무비 서치 뷰
     var movies = [MovieListModel]() // 데이터 저장 배열
     
@@ -33,7 +34,7 @@ final class MovieSearchViewController: UIViewController {
         movieSearchView.movieCollectionView.delegate = self
         movieSearchView.movieCollectionView.dataSource = self
         movieSearchView.movieCollectionView.register(SearchMovieCollectionViewCell.self, forCellWithReuseIdentifier: "movieCell")
-        
+
         // 상영중인 영화 데이터를 가져오는 메서드 선언
         fetchNowPlayingMovies()
         // 상영예정인 영화 테이터를 가져오는 메서드 선언
@@ -114,9 +115,12 @@ extension MovieSearchViewController: UICollectionViewDelegate, UICollectionViewD
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.present(MovieDetailViewController(), animated: true)
-    }
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let selectMovie = isSearching ? filteredMoives[indexPath.item] : movies[indexPath.item]
+    let detailVC = MovieDetailViewController()
+    detailVC.movie = selectMovie
+    navigationController?.pushViewController(detailVC, animated: true)
+  }
 }
 
 
