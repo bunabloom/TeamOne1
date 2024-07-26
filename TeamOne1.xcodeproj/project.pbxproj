@@ -101,6 +101,50 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		9F1514EF2C53B22800BF8531 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				566D85F52C4E3BF300D59102 /* SignupViewController.swift */,
+				9F4CB9482C4DF9B000D4847F /* LoginViewController.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		9F1514F02C53B23F00BF8531 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				9F4CB98C2C4ED9FC00D4847F /* LoginView.swift */,
+				9F4CB98A2C4ED9E400D4847F /* SignUPView.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		9F1514F12C53B25800BF8531 /* MainController */ = {
+			isa = PBXGroup;
+			children = (
+				4586EE5D2C4FBB3700FEBFF7 /* MovieListViewController.swift */,
+				9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */,
+				56A865092C508C9A00A9E982 /* MainTabBarViewController.swift */,
+				56DAA70F2C51E13100382203 /* MyPageViewController.swift */,
+				4586EE9E2C51E99C00FEBFF7 /* MovieSearchViewController.swift */,
+			);
+			path = MainController;
+			sourceTree = "<group>";
+		};
+		9F1514F22C53B26900BF8531 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				9F4CB9582C4E3C0100D4847F /* MovieDetailView.swift */,
+				4586EE592C4FBADE00FEBFF7 /* MvListTableViewCell.swift */,
+				4586EE5B2C4FBB0C00FEBFF7 /* MvCollectionViewCell.swift */,
+				4586EE5F2C4FBB5700FEBFF7 /* MovieListView.swift */,
+				56DAA7112C51E14300382203 /* MyPageView.swift */,
+				4586EEA02C51E9EC00FEBFF7 /* MovieSearchView.swift */,
+				3C574A642C52419C007CB4A1 /* BookingViewController.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
 		9F4CB9382C4DF9B000D4847F = {
 			isa = PBXGroup;
 			children = (
@@ -137,13 +181,8 @@
 		9F4CB95D2C4E5D7500D4847F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9F4CB9582C4E3C0100D4847F /* MovieDetailView.swift */,
-				9F4CB98C2C4ED9FC00D4847F /* LoginView.swift */,
-				9F4CB98A2C4ED9E400D4847F /* SignUPView.swift */,
-				4586EE5F2C4FBB5700FEBFF7 /* MovieListView.swift */,
-				56DAA7112C51E14300382203 /* MyPageView.swift */,
-				4586EEA02C51E9EC00FEBFF7 /* MovieSearchView.swift */,
-				3C574A642C52419C007CB4A1 /* BookingViewController.swift */,
+				9F1514F02C53B23F00BF8531 /* LoginView */,
+				9F1514F22C53B26900BF8531 /* MainView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -151,8 +190,6 @@
 		9F4CB95E2C4E5D9600D4847F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4586EE592C4FBADE00FEBFF7 /* MvListTableViewCell.swift */,
-				4586EE5B2C4FBB0C00FEBFF7 /* MvCollectionViewCell.swift */,
 				E2237E0D2C50C6C20006EF2A /* MovieListModel.swift */,
 				4586EE9A2C51E8B500FEBFF7 /* SearchMovieNetwork.swift */,
 				4586EE9C2C51E97100FEBFF7 /* SearchMovieCollectionViewCell.swift */,
@@ -164,13 +201,8 @@
 		9F4CB95F2C4E5DAD00D4847F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				4586EE5D2C4FBB3700FEBFF7 /* MovieListViewController.swift */,
-				566D85F52C4E3BF300D59102 /* SignupViewController.swift */,
-				9F4CB9482C4DF9B000D4847F /* LoginViewController.swift */,
-				9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */,
-				56A865092C508C9A00A9E982 /* MainTabBarViewController.swift */,
-				56DAA70F2C51E13100382203 /* MyPageViewController.swift */,
-				4586EE9E2C51E99C00FEBFF7 /* MovieSearchViewController.swift */,
+				9F1514EF2C53B22800BF8531 /* LoginView */,
+				9F1514F12C53B25800BF8531 /* MainController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
