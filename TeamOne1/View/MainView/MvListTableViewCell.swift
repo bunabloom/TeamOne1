@@ -25,14 +25,14 @@ final class MvListTableViewCell: UITableViewCell {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
     layout.itemSize = CGSize(width: 100, height: 200) // 아이템 높이를 200으로 변경하여 제목을 포함할 수 있게 설정
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.register(MvCollectionViewCell.self, forCellWithReuseIdentifier: MvCollectionViewCell.id)
     collectionView.showsHorizontalScrollIndicator = false // 스크롤바 숨김 설정
     return collectionView
   }()
-  //MARk
+  
   
   
   
@@ -83,6 +83,7 @@ extension MvListTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
     cell.configure(with: movie)
     return cell
   }
+  
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let selectMovie = movies[indexPath.item]
     movieListViewController?.showMovieDetail(with: selectMovie)
@@ -142,6 +143,54 @@ class MvCollectionViewCell: UICollectionViewCell {
             imageView.image = nil
         }
         titleLabel.text = movie.title
+    }
+}
+
+
+final class SearchMovieCollectionViewCell: UICollectionViewCell {
+    
+    // 영화 포스터이미지를 표시할 이미지 뷰
+    let posterImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        iv.layer.cornerRadius = 15
+        return iv
+    }()
+    
+    // 영화 제목을 표시할 라벨
+    let ptTitleLabel: UILabel = {
+        let lb = UILabel()
+        lb.font = .boldSystemFont(ofSize: 15)
+        lb.textColor = .white
+        lb.numberOfLines = 0
+        lb.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        lb.textAlignment = .center
+        return lb
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        [
+            posterImageView,
+            ptTitleLabel].forEach { contentView.addSubview($0) }
+        
+        posterImageView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        ptTitleLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(30)
+            $0.width.equalTo(90)
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
