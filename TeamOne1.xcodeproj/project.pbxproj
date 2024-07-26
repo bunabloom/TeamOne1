@@ -164,10 +164,10 @@
 		9F4CB95F2C4E5DAD00D4847F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4586EE5D2C4FBB3700FEBFF7 /* MovieListViewController.swift */,
 				566D85F52C4E3BF300D59102 /* SignupViewController.swift */,
 				9F4CB9482C4DF9B000D4847F /* LoginViewController.swift */,
 				9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */,
-				4586EE5D2C4FBB3700FEBFF7 /* MovieListViewController.swift */,
 				56A865092C508C9A00A9E982 /* MainTabBarViewController.swift */,
 				56DAA70F2C51E13100382203 /* MyPageViewController.swift */,
 				4586EE9E2C51E99C00FEBFF7 /* MovieSearchViewController.swift */,

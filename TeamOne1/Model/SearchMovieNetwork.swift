@@ -10,15 +10,17 @@ import Foundation
 
 struct Constants {
     static let apiKey = "4e7d627f53b0470f38e13533b907923c"
-    static let nowPlayingURL = "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)&language=ko-KR&page=1&region=KR"
+   // static let nowPlayingURL = "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)&language=ko-KR&page=\(page)&region=KR"
 }
 
 final class SearchMovieNetwork {
     
     static let shared = SearchMovieNetwork() // 싱글톤 패턴
     
-    func fetchNowPlayingMovies(completion: @escaping (Result<[MovieListModel], Error>) -> Void) {
-        guard let url = URL(string: Constants.nowPlayingURL) else { return }
+    // 현재 상영중인 영화 데이터 가져오기
+    func fetchNowPlayingMovies(page: Int, completion: @escaping (Result<[MovieListModel], Error>) -> Void) {
+        let urlString = "https://api.themoviedb.org/3/movie/now_playing?api_key=\(Constants.apiKey)&language=ko-KR&page=\(page)&region=KR"
+        guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
@@ -34,4 +36,6 @@ final class SearchMovieNetwork {
             }
         }.resume()
     }
+    
 }
+
