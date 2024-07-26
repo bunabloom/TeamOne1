@@ -84,6 +84,12 @@ final class MovieListViewController: UIViewController {
             print("Failed to fetch movies: \(error)")
         }
     }
+  func showMovieDetail(with movie: MovieListModel) {
+    let detail = MovieDetailViewController()
+    detail.movie = movie
+    detail.modalPresentationStyle = .pageSheet
+    present(detail, animated: true, completion: nil)
+  }
 }
 
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -107,8 +113,7 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
-        
-        return cell
+      return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

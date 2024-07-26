@@ -10,9 +10,16 @@ import SnapKit
 
 final class MovieDetailViewController: UIViewController{
   let movieDetailView = MovieDetailView()
+  var movie: MovieListModel?
   override func viewDidLoad() {
     super.viewDidLoad()
     configureUI()
+    
+    
+    if let movie = movie{
+      print("movie id : \(movie.id)")
+      
+    }
   }
   
   private func configureUI() {
