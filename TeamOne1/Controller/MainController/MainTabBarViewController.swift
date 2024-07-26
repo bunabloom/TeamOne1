@@ -32,6 +32,9 @@ final class MainTabBarViewController: UIViewController {
         
         view.backgroundColor = .white
         
+      
+      
+      prac()
         setupLogoView()
         loadUserInfo()
         setupViewControllers()
@@ -45,7 +48,17 @@ final class MainTabBarViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
+  
+  func prac(){
+    let url = "https://api.themoviedb.org/3/movie/1022789?api_key=4e7d627f53b0470f38e13533b907923c&language=ko-KR"
+    MovieNetwork().getData(endPoint: url) { [weak self] (result: MovieDetailModel?) in
+      guard let result else {return}
+      print(result.overview,result.title)
+      
+      
+      
+    }
+  }
     private func setupLogoView() {
         logoView.backgroundColor = .white
         view.addSubview(logoView)

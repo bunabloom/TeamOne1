@@ -180,7 +180,7 @@ class BookingViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      view.backgroundColor = .white
         setupViews()
     }
     @objc
