@@ -33,19 +33,19 @@ final class LoginView: UIView {
   
   lazy var loginButton: UIButton = {
       let button = UIButton(type: .system)
-      button.setTitle("Login", for: .normal)
+      button.setTitle("로그인", for: .normal)
       button.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0)
       button.setTitleColor(.white, for: .normal)
       button.layer.cornerRadius = 5
-      
+      button.titleLabel?.font = UIFont(name: "NanumSquareNeo-dEb", size: 17)
       return button
   }()
 
   lazy var signupButton: UIButton = {
       let button = UIButton(type: .system)
-      button.setTitle("Sign Up", for: .normal)
+      button.setTitle("회원가입", for: .normal)
       button.setTitleColor(UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0), for: .normal)
-      
+      button.titleLabel?.font = UIFont(name: "NanumSquareNeo-dEb", size: 17)
       return button
   }()
   
@@ -90,13 +90,13 @@ final class LoginView: UIView {
     }
     loginButton.snp.makeConstraints{
       $0.centerX.equalTo(safeAreaLayoutGuide)
-      $0.top.equalTo(pwTextField.snp.bottom).offset(40)
+      $0.top.equalTo(pwTextField.snp.bottom).offset(50)
       $0.width.equalTo(120)
       $0.height.equalTo(40)
     }
     signupButton.snp.makeConstraints{
       $0.centerX.equalTo(safeAreaLayoutGuide)
-      $0.top.equalTo(loginButton.snp.bottom).offset(10)
+      $0.top.equalTo(loginButton.snp.bottom).offset(15)
       $0.width.equalTo(loginButton)
       $0.height.equalTo(loginButton)
     }
