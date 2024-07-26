@@ -45,8 +45,7 @@ final class LoginViewController: UIViewController {
               showAlert(message: "로그인 성공") {
                 // 로그인 성공 시 메인화면 전환
                 let tabBarController = MainTabBarViewController()
-                tabBarController.modalPresentationStyle = .fullScreen
-                self.present(tabBarController, animated: true, completion: nil)
+                  self.navigationController?.pushViewController(tabBarController, animated: true)
               }
             } else {
               showAlert(message: "아이디 또는 비밀번호가 잘못되었습니다.")
