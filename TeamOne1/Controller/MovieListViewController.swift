@@ -96,6 +96,7 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: MvListTableViewCell.id, for: indexPath) as! MvListTableViewCell
         cell.titleLabel.text = titles[indexPath.row] // 타이틀 설정
       cell.movieListViewController = self
+        cell.selectionStyle = .none
         // 각 행에 맞는 데이터를 전달
         switch indexPath.row {
         case 0:
