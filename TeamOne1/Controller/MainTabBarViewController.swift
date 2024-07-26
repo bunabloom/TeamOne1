@@ -20,7 +20,7 @@ final class MainTabBarViewController: UIViewController {
         let lb = UILabel()
         lb.textAlignment = .right
         lb.textColor = .black
-        lb.font = .boldSystemFont(ofSize: 14)
+        lb.font = UIFont(name: "NanumSquareNeo-cBd", size: 13)
         return lb
     }()
     
@@ -116,13 +116,13 @@ final class MainTabBarViewController: UIViewController {
 
 
         let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: 18),
+            .font: UIFont(name: "NanumSquareNeo-dEb", size: 18) ?? .systemFont(ofSize: 18),
             .foregroundColor: UIColor.white
         ]
         UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .selected)
         
-        let positionAdjustment = UIOffset(horizontal: 0, vertical: -15) // 수직 위치 조정
+        let positionAdjustment = UIOffset(horizontal: 0, vertical: -17) // 수직 위치 조정
         UITabBarItem.appearance().titlePositionAdjustment = positionAdjustment
         
         view.addSubview(customTabBar)

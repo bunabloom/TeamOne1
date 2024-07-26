@@ -14,7 +14,7 @@ final class MvListTableViewCell: UITableViewCell {
     let collectionView: UICollectionView
     let titleLabel: UILabel = {
         let lb = UILabel()
-        lb.font = UIFont.boldSystemFont(ofSize: 25)
+        lb.font = UIFont(name: "NanumSquareNeo-dEb", size: 20)
         return lb
     }()
     var movies: [MovieListModel] = []

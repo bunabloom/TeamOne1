@@ -20,6 +20,11 @@
 		56A8650A2C508C9A00A9E982 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A865092C508C9A00A9E982 /* MainTabBarViewController.swift */; };
 		56DAA7102C51E13100382203 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DAA70F2C51E13100382203 /* MyPageViewController.swift */; };
 		56DAA7122C51E14300382203 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DAA7112C51E14300382203 /* MyPageView.swift */; };
+		56DAA7172C53596F00382203 /* NanumSquareNeoOTF-Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 56DAA7162C53596F00382203 /* NanumSquareNeoOTF-Bd.otf */; };
+		56DAA7192C53597D00382203 /* NanumSquareNeoOTF-Eb.otf in Resources */ = {isa = PBXBuildFile; fileRef = 56DAA7182C53597D00382203 /* NanumSquareNeoOTF-Eb.otf */; };
+		56DAA71D2C53598300382203 /* NanumSquareNeoOTF-Rg.otf in Resources */ = {isa = PBXBuildFile; fileRef = 56DAA71A2C53598300382203 /* NanumSquareNeoOTF-Rg.otf */; };
+		56DAA71E2C53598300382203 /* NanumSquareNeoOTF-Hv.otf in Resources */ = {isa = PBXBuildFile; fileRef = 56DAA71B2C53598300382203 /* NanumSquareNeoOTF-Hv.otf */; };
+		56DAA71F2C53598300382203 /* NanumSquareNeoOTF-Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 56DAA71C2C53598300382203 /* NanumSquareNeoOTF-Lt.otf */; };
 		9F4CB9452C4DF9B000D4847F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB9442C4DF9B000D4847F /* AppDelegate.swift */; };
 		9F4CB9472C4DF9B000D4847F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB9462C4DF9B000D4847F /* SceneDelegate.swift */; };
 		9F4CB9492C4DF9B000D4847F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB9482C4DF9B000D4847F /* LoginViewController.swift */; };
@@ -49,6 +54,11 @@
 		56A865092C508C9A00A9E982 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		56DAA70F2C51E13100382203 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		56DAA7112C51E14300382203 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		56DAA7162C53596F00382203 /* NanumSquareNeoOTF-Bd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeoOTF-Bd.otf"; sourceTree = "<group>"; };
+		56DAA7182C53597D00382203 /* NanumSquareNeoOTF-Eb.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeoOTF-Eb.otf"; sourceTree = "<group>"; };
+		56DAA71A2C53598300382203 /* NanumSquareNeoOTF-Rg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeoOTF-Rg.otf"; sourceTree = "<group>"; };
+		56DAA71B2C53598300382203 /* NanumSquareNeoOTF-Hv.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeoOTF-Hv.otf"; sourceTree = "<group>"; };
+		56DAA71C2C53598300382203 /* NanumSquareNeoOTF-Lt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeoOTF-Lt.otf"; sourceTree = "<group>"; };
 		9F4CB9412C4DF9B000D4847F /* TeamOne1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamOne1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4CB9442C4DF9B000D4847F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F4CB9462C4DF9B000D4847F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,9 +87,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56DAA7152C53589800382203 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				56DAA71B2C53598300382203 /* NanumSquareNeoOTF-Hv.otf */,
+				56DAA71C2C53598300382203 /* NanumSquareNeoOTF-Lt.otf */,
+				56DAA71A2C53598300382203 /* NanumSquareNeoOTF-Rg.otf */,
+				56DAA7182C53597D00382203 /* NanumSquareNeoOTF-Eb.otf */,
+				56DAA7162C53596F00382203 /* NanumSquareNeoOTF-Bd.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		9F4CB9382C4DF9B000D4847F = {
 			isa = PBXGroup;
 			children = (
+				56DAA7152C53589800382203 /* Fonts */,
 				9F4CB9432C4DF9B000D4847F /* TeamOne1 */,
 				9F4CB9422C4DF9B000D4847F /* Products */,
 			);
@@ -215,7 +238,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56DAA7172C53596F00382203 /* NanumSquareNeoOTF-Bd.otf in Resources */,
 				9F4CB94E2C4DF9B100D4847F /* Assets.xcassets in Resources */,
+				56DAA7192C53597D00382203 /* NanumSquareNeoOTF-Eb.otf in Resources */,
+				56DAA71F2C53598300382203 /* NanumSquareNeoOTF-Lt.otf in Resources */,
+				56DAA71E2C53598300382203 /* NanumSquareNeoOTF-Hv.otf in Resources */,
+				56DAA71D2C53598300382203 /* NanumSquareNeoOTF-Rg.otf in Resources */,
 				9F4CB9512C4DF9B100D4847F /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
