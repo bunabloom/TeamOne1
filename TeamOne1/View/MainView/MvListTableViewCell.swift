@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class MvListTableViewCell: UITableViewCell {
   static let id = "MvListTableViewCell"
@@ -20,14 +21,18 @@ final class MvListTableViewCell: UITableViewCell {
     return lb
   }()
   
-  let collectionView: UICollectionView = {
-          let layout = UICollectionViewFlowLayout()
-          layout.scrollDirection = .horizontal
-          layout.itemSize = CGSize(width: 100, height: 200) // 아이템 높이를 200으로 변경하여 제목을 포함할 수 있게 설정
-          let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-          return collectionView
-      }()
-  
+  lazy var collectionView: UICollectionView = {
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .horizontal
+    layout.itemSize = CGSize(width: 100, height: 200) // 아이템 높이를 200으로 변경하여 제목을 포함할 수 있게 설정
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.dataSource = self
+    collectionView.delegate = self
+    collectionView.register(MvCollectionViewCell.self, forCellWithReuseIdentifier: MvCollectionViewCell.id)
+    collectionView.showsHorizontalScrollIndicator = false // 스크롤바 숨김 설정
+    return collectionView
+  }()
+  //MARk
   
   
   
@@ -42,8 +47,11 @@ final class MvListTableViewCell: UITableViewCell {
   }
   
   private func configureUI() {
-    contentView.addSubview(titleLabel)
-    contentView.addSubview(collectionView)
+    [
+      titleLabel,
+      collectionView
+    ].forEach{contentView.addSubview($0)}
+    
     
     titleLabel.snp.makeConstraints {
       $0.top.left.right.equalToSuperview().inset(10)
@@ -55,11 +63,7 @@ final class MvListTableViewCell: UITableViewCell {
       $0.height.equalTo(200) // 높이를 고정하여 스크롤 문제가 발생하지 않도록 설정
     }
     
-    collectionView.dataSource = self
-    collectionView.delegate = self
-    collectionView.register(MvCollectionViewCell.self, forCellWithReuseIdentifier: MvCollectionViewCell.id)
-    
-    collectionView.showsHorizontalScrollIndicator = false // 스크롤바 숨김 설정
+
   }
   
   func updateCollectionView(with movies: [MovieListModel]) {
@@ -85,3 +89,59 @@ extension MvListTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
     //        movieListViewController?.navigationController?.pushViewController(MovieDetailViewController(), animated: true)
   }
 }
+
+//MARK: TableView 셀 안의 CollectionView
+class MvCollectionViewCell: UICollectionViewCell {
+    static let id = "MvCollectionViewCell"
+    
+    let imageView = UIImageView()
+    let titleLabel = UILabel()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        contentView.addSubview(imageView)
+        contentView.addSubview(titleLabel)
+        
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 15
+        
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont.systemFont(ofSize: 12)
+        titleLabel.numberOfLines = 2
+        
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupConstraints() {
+        imageView.snp.makeConstraints {
+            $0.top.equalTo(contentView)
+            $0.leading.equalTo(contentView)
+            $0.trailing.equalTo(contentView)
+            $0.height.equalTo(contentView.snp.width).multipliedBy(1.5)
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(imageView.snp.bottom).offset(5)
+            $0.leading.equalTo(contentView).offset(5)
+            $0.trailing.equalTo(contentView).offset(-5)
+            $0.bottom.equalTo(contentView).offset(-5)
+        }
+    }
+    
+    func configure(with movie: MovieListModel) {
+        if let posterPath = movie.posterPath {
+            let url = URL(string: "https://image.tmdb.org/t/p/w500" + posterPath)
+            imageView.kf.setImage(with: url)
+        } else {
+            imageView.image = nil
+        }
+        titleLabel.text = movie.title
+    }
+}
+
