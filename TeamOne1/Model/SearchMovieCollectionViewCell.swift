@@ -54,3 +54,4 @@ final class SearchMovieCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

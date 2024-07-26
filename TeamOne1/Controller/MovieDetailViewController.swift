@@ -18,7 +18,6 @@ final class MovieDetailViewController: UIViewController{
     
     if let movie = movie{
       print("movie id : \(movie.id)")
-      
     }
   }
   
