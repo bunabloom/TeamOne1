@@ -84,6 +84,12 @@ final class MovieListViewController: UIViewController {
             print("Failed to fetch movies: \(error)")
         }
     }
+  func showMovieDetail(with movie: MovieListModel) {
+    let detail = MovieDetailViewController()
+    detail.movie = movie
+    detail.modalPresentationStyle = .pageSheet
+    present(detail, animated: true, completion: nil)
+  }
 }
 
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -96,6 +102,7 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: MvListTableViewCell.id, for: indexPath) as! MvListTableViewCell
         cell.titleLabel.text = titles[indexPath.row] // 타이틀 설정
       cell.movieListViewController = self
+        cell.selectionStyle = .none
         // 각 행에 맞는 데이터를 전달
         switch indexPath.row {
         case 0:
@@ -107,8 +114,7 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
-        
-        return cell
+      return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

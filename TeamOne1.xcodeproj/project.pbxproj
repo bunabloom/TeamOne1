@@ -20,6 +20,11 @@
 		56A8650A2C508C9A00A9E982 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A865092C508C9A00A9E982 /* MainTabBarViewController.swift */; };
 		56DAA7102C51E13100382203 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DAA70F2C51E13100382203 /* MyPageViewController.swift */; };
 		56DAA7122C51E14300382203 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DAA7112C51E14300382203 /* MyPageView.swift */; };
+		56DAA7172C53596F00382203 /* NanumSquareNeoOTF-Bd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 56DAA7162C53596F00382203 /* NanumSquareNeoOTF-Bd.otf */; };
+		56DAA7192C53597D00382203 /* NanumSquareNeoOTF-Eb.otf in Resources */ = {isa = PBXBuildFile; fileRef = 56DAA7182C53597D00382203 /* NanumSquareNeoOTF-Eb.otf */; };
+		56DAA71D2C53598300382203 /* NanumSquareNeoOTF-Rg.otf in Resources */ = {isa = PBXBuildFile; fileRef = 56DAA71A2C53598300382203 /* NanumSquareNeoOTF-Rg.otf */; };
+		56DAA71E2C53598300382203 /* NanumSquareNeoOTF-Hv.otf in Resources */ = {isa = PBXBuildFile; fileRef = 56DAA71B2C53598300382203 /* NanumSquareNeoOTF-Hv.otf */; };
+		56DAA71F2C53598300382203 /* NanumSquareNeoOTF-Lt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 56DAA71C2C53598300382203 /* NanumSquareNeoOTF-Lt.otf */; };
 		9F4CB9452C4DF9B000D4847F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB9442C4DF9B000D4847F /* AppDelegate.swift */; };
 		9F4CB9472C4DF9B000D4847F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB9462C4DF9B000D4847F /* SceneDelegate.swift */; };
 		9F4CB9492C4DF9B000D4847F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB9482C4DF9B000D4847F /* LoginViewController.swift */; };
@@ -33,6 +38,7 @@
 		9F4CB98F2C4EE8C000D4847F /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */; };
 		E2237E0E2C50C6C20006EF2A /* MovieListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2237E0D2C50C6C20006EF2A /* MovieListModel.swift */; };
 		E2237E112C50C8AB0006EF2A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E2237E102C50C8AB0006EF2A /* Kingfisher */; };
+		E2F842702C5374D700C49FF1 /* MovieDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8426F2C5374D700C49FF1 /* MovieDetailModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +55,11 @@
 		56A865092C508C9A00A9E982 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		56DAA70F2C51E13100382203 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		56DAA7112C51E14300382203 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		56DAA7162C53596F00382203 /* NanumSquareNeoOTF-Bd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeoOTF-Bd.otf"; sourceTree = "<group>"; };
+		56DAA7182C53597D00382203 /* NanumSquareNeoOTF-Eb.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeoOTF-Eb.otf"; sourceTree = "<group>"; };
+		56DAA71A2C53598300382203 /* NanumSquareNeoOTF-Rg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeoOTF-Rg.otf"; sourceTree = "<group>"; };
+		56DAA71B2C53598300382203 /* NanumSquareNeoOTF-Hv.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeoOTF-Hv.otf"; sourceTree = "<group>"; };
+		56DAA71C2C53598300382203 /* NanumSquareNeoOTF-Lt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeoOTF-Lt.otf"; sourceTree = "<group>"; };
 		9F4CB9412C4DF9B000D4847F /* TeamOne1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamOne1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4CB9442C4DF9B000D4847F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F4CB9462C4DF9B000D4847F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +73,7 @@
 		9F4CB98C2C4ED9FC00D4847F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		9F4CB98E2C4EE8C000D4847F /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		E2237E0D2C50C6C20006EF2A /* MovieListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListModel.swift; sourceTree = "<group>"; };
+		E2F8426F2C5374D700C49FF1 /* MovieDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +89,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56DAA7152C53589800382203 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				56DAA71B2C53598300382203 /* NanumSquareNeoOTF-Hv.otf */,
+				56DAA71C2C53598300382203 /* NanumSquareNeoOTF-Lt.otf */,
+				56DAA71A2C53598300382203 /* NanumSquareNeoOTF-Rg.otf */,
+				56DAA7182C53597D00382203 /* NanumSquareNeoOTF-Eb.otf */,
+				56DAA7162C53596F00382203 /* NanumSquareNeoOTF-Bd.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		9F4CB9382C4DF9B000D4847F = {
 			isa = PBXGroup;
 			children = (
+				56DAA7152C53589800382203 /* Fonts */,
 				9F4CB9432C4DF9B000D4847F /* TeamOne1 */,
 				9F4CB9422C4DF9B000D4847F /* Products */,
 			);
@@ -131,6 +156,7 @@
 				E2237E0D2C50C6C20006EF2A /* MovieListModel.swift */,
 				4586EE9A2C51E8B500FEBFF7 /* SearchMovieNetwork.swift */,
 				4586EE9C2C51E97100FEBFF7 /* SearchMovieCollectionViewCell.swift */,
+				E2F8426F2C5374D700C49FF1 /* MovieDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -215,7 +241,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56DAA7172C53596F00382203 /* NanumSquareNeoOTF-Bd.otf in Resources */,
 				9F4CB94E2C4DF9B100D4847F /* Assets.xcassets in Resources */,
+				56DAA7192C53597D00382203 /* NanumSquareNeoOTF-Eb.otf in Resources */,
+				56DAA71F2C53598300382203 /* NanumSquareNeoOTF-Lt.otf in Resources */,
+				56DAA71E2C53598300382203 /* NanumSquareNeoOTF-Hv.otf in Resources */,
+				56DAA71D2C53598300382203 /* NanumSquareNeoOTF-Rg.otf in Resources */,
 				9F4CB9512C4DF9B100D4847F /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +261,7 @@
 				4586EE5A2C4FBADE00FEBFF7 /* MvListTableViewCell.swift in Sources */,
 				9F4CB9592C4E3C0100D4847F /* MovieDetailView.swift in Sources */,
 				566D85F62C4E3BF300D59102 /* SignupViewController.swift in Sources */,
+				E2F842702C5374D700C49FF1 /* MovieDetailModel.swift in Sources */,
 				4586EE9F2C51E99C00FEBFF7 /* MovieSearchViewController.swift in Sources */,
 				56A8650A2C508C9A00A9E982 /* MainTabBarViewController.swift in Sources */,
 				4586EE9D2C51E97100FEBFF7 /* SearchMovieCollectionViewCell.swift in Sources */,
