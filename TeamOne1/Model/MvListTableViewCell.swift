@@ -72,9 +72,7 @@ extension MvListTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
         cell.configure(with: movie)
         return cell
     }
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let selectedMovie = movies[indexPath.item]
-    movieListViewController?.showMovieDetail(with: selectedMovie)
-
-  }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        movieListViewController?.navigationController?.pushViewController(MovieDetailViewController(), animated: true)
+    }
 }
