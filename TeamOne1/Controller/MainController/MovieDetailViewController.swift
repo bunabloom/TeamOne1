@@ -51,8 +51,17 @@ final class MovieDetailViewController: UIViewController{
       
     }
   }
+    
+    // 하프모달 메서드
+    func showModal() {
+        let vc = ReservationViewController()
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+        self.present(vc, animated: true)
+    }
   
   @objc func changeView(){
-    self.present(BookingViewController(), animated: true)
+    showModal()
   }
 }
