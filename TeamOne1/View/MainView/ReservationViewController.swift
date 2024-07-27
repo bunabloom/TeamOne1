@@ -92,9 +92,9 @@ class ReservationViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("결제하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
-      button.setTitleColor(.red, for: .selected)
+        button.setTitleColor(.red, for: .selected)
         button.frame.size = CGSize.init(width: 150, height: 60)
-      button.configuration = .plain()
+        button.configuration = config
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(pressPayButton), for: .touchUpInside)
         return button
