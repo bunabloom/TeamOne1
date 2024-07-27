@@ -10,12 +10,16 @@ import SnapKit
 import Kingfisher
 
 final class MovieSearchViewController: UIViewController {
-    
-    let movieSearchView = MovieSearchView()
+   var movieListViewController: MovieListViewController?
+
+    let movieSearchView = MovieSearchView() // 무비 서치 뷰
     var movies = [MovieListModel]() // 데이터 저장 배열
     
     var filteredMoives = [MovieListModel]() // 필터링 된 영화 데이터 저장 배열
     var isSearching = false // 검색 상태를 나타내는 변수
+    
+    var currentPage = 1 // 현재 페이지 번호
+    var isFetchingMovies = false // 데이터를 받아오는 중인지? 확인
     
     
     override func viewDidLoad() {
@@ -30,19 +34,12 @@ final class MovieSearchViewController: UIViewController {
         movieSearchView.movieCollectionView.delegate = self
         movieSearchView.movieCollectionView.dataSource = self
         movieSearchView.movieCollectionView.register(SearchMovieCollectionViewCell.self, forCellWithReuseIdentifier: "movieCell")
-        
-        // 나우 플레잉 무비 네트워크에서 현재 상영중인 영화 데이터를 가져옴
-        SearchMovieNetwork.shared.fetchNowPlayingMovies { [weak self] result in
-            switch result {
-            case .success(let movies):
-                self?.movies = movies
-                DispatchQueue.main.async {
-                    self?.movieSearchView.movieCollectionView.reloadData()
-                }
-            case . failure(let error):
-                print("Error fetching movies: \(error)")
-            }
-        }
+
+        // 상영중인 영화 데이터를 가져오는 메서드 선언
+        fetchNowPlayingMovies()
+        // 상영예정인 영화 테이터를 가져오는 메서드 선언
+        // fetchUpcomingMovies()
+
     }
     
     private func setupSearchView() {
@@ -50,6 +47,26 @@ final class MovieSearchViewController: UIViewController {
       movieSearchView.snp.makeConstraints {
         $0.edges.equalToSuperview()
       }
+    }
+    
+    // 현재 상영중인 영화 데이터를 가져오는 메서드
+    private func fetchNowPlayingMovies() {
+        guard !isFetchingMovies else { return }
+        isFetchingMovies = true
+        
+        MovieNetwork.shared.fetchNowPlayingMovies(page: currentPage) { [weak self] result in
+            switch result {
+            case .success(let movies):
+                self?.movies.append(contentsOf: movies)
+                self?.currentPage += 1
+                DispatchQueue.main.async {
+                    self?.movieSearchView.movieCollectionView.reloadData()
+                }
+            case . failure(let error):
+                print("Error fetching movies: \(error)")
+            }
+            self?.isFetchingMovies = false
+        }
     }
     
 }
@@ -86,6 +103,24 @@ extension MovieSearchViewController: UICollectionViewDelegate, UICollectionViewD
         }
         return cell
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        // 컬렉션 뷰 스크롤이 끝에 도달하면 다음페이지의 데이터를 가져옴
+        if offsetY > contentHeight - height * 2 {
+            fetchNowPlayingMovies()
+        }
+    }
+    
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let selectMovie = isSearching ? filteredMoives[indexPath.item] : movies[indexPath.item]
+    let detailVC = MovieDetailViewController()
+    detailVC.movie = selectMovie
+    navigationController?.pushViewController(detailVC, animated: true)
+  }
 }
 
 

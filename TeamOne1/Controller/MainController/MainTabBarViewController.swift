@@ -20,15 +20,21 @@ final class MainTabBarViewController: UIViewController {
         let lb = UILabel()
         lb.textAlignment = .right
         lb.textColor = .black
-        lb.font = .boldSystemFont(ofSize: 14)
+        lb.font = UIFont(name: "NanumSquareNeo-cBd", size: 13)
         return lb
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // 생명주기 때문에 viewDidLoad로 해주면 디테일뷰컨에서 백버튼 눌렀을 때 네비게이션 바 노출됨 매번 똑같이 네비게이션 바 안보이는 뷰가 보여야 해서 viewWillAppear 사용
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+
         
         view.backgroundColor = .white
         
+      
+      
+      
         setupLogoView()
         loadUserInfo()
         setupViewControllers()
@@ -38,6 +44,12 @@ final class MainTabBarViewController: UIViewController {
         selectViewController(at: 0)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+  
+
     private func setupLogoView() {
         logoView.backgroundColor = .white
         view.addSubview(logoView)
@@ -108,13 +120,13 @@ final class MainTabBarViewController: UIViewController {
 
 
         let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: 18),
+            .font: UIFont(name: "NanumSquareNeo-dEb", size: 18) ?? .systemFont(ofSize: 18),
             .foregroundColor: UIColor.white
         ]
         UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .selected)
         
-        let positionAdjustment = UIOffset(horizontal: 0, vertical: -15) // 수직 위치 조정
+        let positionAdjustment = UIOffset(horizontal: 0, vertical: -17) // 수직 위치 조정
         UITabBarItem.appearance().titlePositionAdjustment = positionAdjustment
         
         view.addSubview(customTabBar)

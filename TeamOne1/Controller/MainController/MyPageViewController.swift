@@ -23,14 +23,14 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
     // 사용자 id 라벨
     let idLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 24)
+        label.font = UIFont(name: "NanumSquareNeo-dEb", size: 24)
         label.textAlignment = .left
         return label
     }()
 
     let helloLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18)
+        label.font = UIFont(name: "NanumSquareNeo-cBd", size: 18)
         label.textAlignment = .left
         label.text = "안녕하세요."
         return label
@@ -38,7 +38,7 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
     
     let userInfoLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16)
+        label.font = UIFont(name: "NanumSquareNeo-bRg", size: 16)
         label.numberOfLines = 0
         label.textAlignment = .left
         return label
@@ -46,14 +46,14 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
     
     let userInfoTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 18)
+        label.font = UIFont(name: "NanumSquareNeo-dEb", size: 20)
         label.text = "내 정보"
         return label
     }()
     
     let bookingHistoryTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 18)
+        label.font = UIFont(name: "NanumSquareNeo-dEb", size: 20)
         label.text = "영화 예매 내역"
         return label
     }()
@@ -65,6 +65,7 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
         button.backgroundColor = .systemRed
         button.tintColor = .white
         button.layer.cornerRadius = 5
+        button.titleLabel?.font = UIFont(name: "NanumSquareNeo-dEb", size: 16)
         button.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -125,7 +126,7 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
         }
 
         userInfoTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(horizontalStackView.snp.bottom).offset(30)
+            make.top.equalTo(horizontalStackView.snp.bottom).offset(60)
             make.leading.trailing.equalToSuperview().inset(30)
         }
 
@@ -135,7 +136,7 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
         }
 
         bookingHistoryTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(userInfoLabel.snp.bottom).offset(20)
+            make.top.equalTo(userInfoLabel.snp.bottom).offset(40)
             make.leading.trailing.equalToSuperview().inset(30)
         }
 
@@ -157,6 +158,10 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
     }
 
     func loadUserInfo() {
+      
+      if let usermovie = UserDefaults.standard.string(forKey: "movie"){
+        print("###",usermovie)}
+      
         if let userid = UserDefaults.standard.string(forKey: "loggedInUserID"),
            let userDict = UserDefaults.standard.dictionary(forKey: userid) as? [String: String] {
             idLabel.text = "\(userDict["userid"] ?? "아이디")님"
@@ -164,15 +169,16 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
             이름: \(userDict["username"] ?? "")
             생년월일: \(userDict["userbirth"] ?? "")
             """
+          
         }
     }
 
     @objc func logoutButtonTapped() {
         // 로그아웃 처리: 사용자 데이터 초기화, 로그인 화면으로 전환 등
         UserDefaults.standard.removeObject(forKey: "loggedInUserID")
-        let loginVC = LoginViewController()
-        loginVC.modalPresentationStyle = .fullScreen
-        present(loginVC, animated: true, completion: nil)
+        
+        // 네비게이션 스택 초기화하고 루트뷰컨으로 돌아가기
+        navigationController?.popToRootViewController(animated: true)
     }
 
     // 컬렉션 뷰 데이터 소스 메서드
@@ -196,6 +202,12 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: 100)
     }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    navigationController?.pushViewController(MovieDetailViewController(), animated: true)
+    
+  }
   
 
 }
