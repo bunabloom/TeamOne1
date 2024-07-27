@@ -12,6 +12,7 @@ class ReservationViewController: UIViewController {
   var sss: MovieDetailViewController?
     var numberCount: Int = 1
     var price: Int = 14000
+    var saveDate: String?
   
     // 날짜
     let setDate: UIPickerView = {
@@ -90,8 +91,9 @@ class ReservationViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("결제하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
+      button.setTitleColor(.red, for: .selected)
         button.frame.size = CGSize.init(width: 150, height: 60)
-        button.configuration = config
+      button.configuration = .plain()
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(pressPayButton), for: .touchUpInside)
         return button
@@ -106,7 +108,6 @@ class ReservationViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
-        
         setDate.delegate = self
         setDate.dataSource = self
         setDate.backgroundColor = .white
@@ -168,6 +169,7 @@ class ReservationViewController: UIViewController {
             $0.centerX.equalToSuperview()
         }
         
+
     }
     
     @objc
@@ -209,11 +211,15 @@ class ReservationViewController: UIViewController {
         completedAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
         self.present(completedAlert,animated: true, completion: nil)
       
-      let info = temp(date: "20240727", time: "10:20", people: 2, title: "ss")
+      guard let saveDate = saveDate else { return }
+      
+      let info = temp(date: saveDate, time: "10:20", people: numberCount, price: numberCount * 14000 )
       
       UserDefaults.standard.set("\(resevationModel.reservationMovie)", forKey: "movie")
       
       UserDefaults.standard.setValue("\(info)",forKey:"ticketingInfo")
+      
+      
       
       if let ticketinginfo = UserDefaults.standard.string(forKey: "ticketingInfo")
       {print("####",ticketinginfo)}
@@ -246,6 +252,7 @@ class ReservationViewController: UIViewController {
         }
         
         func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+
             switch pickerView.tag {
             case 1:
                 return 날짜[row]
@@ -254,8 +261,8 @@ class ReservationViewController: UIViewController {
             default:
                 return nil
             }
+
         }
-        
     }
     
 
