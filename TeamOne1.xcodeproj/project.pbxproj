@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3C574A652C52419C007CB4A1 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C574A642C52419C007CB4A1 /* BookingViewController.swift */; };
+		3C574A652C52419C007CB4A1 /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C574A642C52419C007CB4A1 /* ReservationViewController.swift */; };
 		4586EE5A2C4FBADE00FEBFF7 /* MvListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586EE592C4FBADE00FEBFF7 /* MvListTableViewCell.swift */; };
 		4586EE5E2C4FBB3700FEBFF7 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586EE5D2C4FBB3700FEBFF7 /* MovieListViewController.swift */; };
 		4586EE602C4FBB5700FEBFF7 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586EE5F2C4FBB5700FEBFF7 /* MovieListView.swift */; };
@@ -40,7 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3C574A642C52419C007CB4A1 /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
+		3C574A642C52419C007CB4A1 /* ReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewController.swift; sourceTree = "<group>"; };
 		4586EE592C4FBADE00FEBFF7 /* MvListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvListTableViewCell.swift; sourceTree = "<group>"; };
 		4586EE5D2C4FBB3700FEBFF7 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		4586EE5F2C4FBB5700FEBFF7 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 				4586EE5F2C4FBB5700FEBFF7 /* MovieListView.swift */,
 				56DAA7112C51E14300382203 /* MyPageView.swift */,
 				4586EEA02C51E9EC00FEBFF7 /* MovieSearchView.swift */,
-				3C574A642C52419C007CB4A1 /* BookingViewController.swift */,
+				3C574A642C52419C007CB4A1 /* ReservationViewController.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -301,7 +301,7 @@
 				4586EEA12C51E9EC00FEBFF7 /* MovieSearchView.swift in Sources */,
 				9F4CB98D2C4ED9FC00D4847F /* LoginView.swift in Sources */,
 				4586EE602C4FBB5700FEBFF7 /* MovieListView.swift in Sources */,
-				3C574A652C52419C007CB4A1 /* BookingViewController.swift in Sources */,
+				3C574A652C52419C007CB4A1 /* ReservationViewController.swift in Sources */,
 				4586EE9B2C51E8B500FEBFF7 /* MovieNetwork.swift in Sources */,
 				9F4CB98F2C4EE8C000D4847F /* MovieDetailViewController.swift in Sources */,
 				9F4CB94C2C4DF9B000D4847F /* TeamOne1.xcdatamodeld in Sources */,
