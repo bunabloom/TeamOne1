@@ -15,6 +15,10 @@ struct temp {
   let date: String
   let time: String
   let people: Int
+<<<<<<< Updated upstream
   var price: Int
+=======
+  var price: Int{ people * 12000 }
+>>>>>>> Stashed changes
 }
 
