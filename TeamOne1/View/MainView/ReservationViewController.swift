@@ -12,6 +12,7 @@ class ReservationViewController: UIViewController {
   var sss: MovieDetailViewController?
     var numberCount: Int = 1
     var price: Int = 14000
+    var saveDate: String?
   
     // 날짜
     let setDate: UIPickerView = {
@@ -110,7 +111,11 @@ class ReservationViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
-        
+      let temp = UserDefaults.standard.string(forKey: userid)
+//      for (a,b) in temp {
+//        print(a,b)
+//      }
+      print(temp,#function)
         setDate.delegate = self
         setDate.dataSource = self
         setDate.backgroundColor = .white
@@ -175,7 +180,6 @@ class ReservationViewController: UIViewController {
             let button = createButton(title: buttonTitle)
             timeStackView.addArrangedSubview(button)
         }
-        
     }
     
     // 영화 상영시간을 고를수 있는 버튼들을 생성하는 메서드
@@ -241,11 +245,15 @@ class ReservationViewController: UIViewController {
         completedAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
         self.present(completedAlert,animated: true, completion: nil)
       
-      let info = temp(date: "20240727", time: "10:20", people: 2, title: "ss")
+      guard let saveDate = saveDate else { return }
+      
+      let info = temp(date: saveDate, time: "10:20", people: numberCount, price: numberCount * 14000 )
       
       UserDefaults.standard.set("\(resevationModel.reservationMovie)", forKey: "movie")
       
       UserDefaults.standard.setValue("\(info)",forKey:"ticketingInfo")
+      
+      
       
       if let ticketinginfo = UserDefaults.standard.string(forKey: "ticketingInfo")
       {print("####",ticketinginfo)}
@@ -271,9 +279,9 @@ class ReservationViewController: UIViewController {
         }
         
         func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            return 날짜[row]
+          saveDate = 날짜[row]
+          return 날짜[row]
         }
-        
     }
     
 

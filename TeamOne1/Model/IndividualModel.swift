@@ -15,7 +15,6 @@ struct temp {
   let date: String
   let time: String
   let people: Int
-  let title: String
-  var price: Int{ people * 12000 }
+  var price: Int
 }
 
