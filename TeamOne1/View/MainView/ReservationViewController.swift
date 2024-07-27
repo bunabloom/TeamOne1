@@ -169,40 +169,7 @@ class ReservationViewController: UIViewController {
             $0.centerX.equalToSuperview()
         }
         
-<<<<<<< HEAD
-        
-        
-        // 버튼을 스택뷰에 추가
-        for buttonTitle in buttons {
-            let button = createButton(title: buttonTitle)
-            timeStackView.addArrangedSubview(button)
-        }
-    }
-    
-    // 영화 상영시간을 고를수 있는 버튼들을 생성하는 메서드
-    private func createButton(title: String) -> UIButton {
-//        var config = UIButton.Configuration.filled()
-//        config.baseBackgroundColor = .systemGray
-//        config.baseForegroundColor = .white
-//        config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
-        
-        let button = UIButton(type: .system)
-        button.setTitle(title, for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.frame = CGRect(x: 100, y: 100, width: 100, height: 50)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-//        button.configuration = config
-        button.layer.cornerRadius = 10
-        button.titleLabel?.textAlignment = .center
-        button.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
-        return button
-    }
-    
-    // 상영시간 버튼을 눌렀을 때의 액션 버튼
-    @objc private func tappedButton() {
-       
-=======
->>>>>>> main
+
     }
     
     @objc
@@ -285,10 +252,7 @@ class ReservationViewController: UIViewController {
         }
         
         func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-<<<<<<< HEAD
-          saveDate = 날짜[row]
-          return 날짜[row]
-=======
+
             switch pickerView.tag {
             case 1:
                 return 날짜[row]
@@ -297,7 +261,7 @@ class ReservationViewController: UIViewController {
             default:
                 return nil
             }
->>>>>>> main
+
         }
     }
     
