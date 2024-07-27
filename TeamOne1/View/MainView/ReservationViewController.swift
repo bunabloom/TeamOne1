@@ -112,11 +112,6 @@ class ReservationViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
-      let temp = UserDefaults.standard.string(forKey: userid)
-//      for (a,b) in temp {
-//        print(a,b)
-//      }
-      print(temp,#function)
         setDate.delegate = self
         setDate.dataSource = self
         setDate.backgroundColor = .white

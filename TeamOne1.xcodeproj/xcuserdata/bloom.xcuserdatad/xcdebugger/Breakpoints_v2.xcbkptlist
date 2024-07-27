@@ -142,8 +142,8 @@
             filePath = "TeamOne1/View/MainView/ReservationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "plusButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "TeamOne1/View/MainView/ReservationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "showPaymentCompletedAlert()"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,10 +174,70 @@
             filePath = "TeamOne1/View/MainView/ReservationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "showPaymentCompletedAlert()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3C62DD6C-CD09-4A99-898A-FD6C83D568D5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TeamOne1/Controller/LoginView/SignupViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "signupTapped()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3C62DD6C-CD09-4A99-898A-FD6C83D568D5 - 586bcb79b164d0e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TeamOne1.SignupViewController.signupTapped() -&gt; ()"
+                  moduleName = "TeamOne1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bloom/Desktop/TeamOne1/TeamOne1/Controller/LoginView/SignupViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36">
+               </Location>
+               <Location
+                  uuid = "3C62DD6C-CD09-4A99-898A-FD6C83D568D5 - 586bcb79b164d0e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TeamOne1.SignupViewController.signupTapped() -&gt; ()"
+                  moduleName = "TeamOne1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bloom/Desktop/TeamOne1/TeamOne1/Controller/LoginView/SignupViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36">
+               </Location>
+               <Location
+                  uuid = "3C62DD6C-CD09-4A99-898A-FD6C83D568D5 - 586bcb79b164da9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TeamOne1.SignupViewController.signupTapped() -&gt; ()"
+                  moduleName = "TeamOne1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bloom/Desktop/TeamOne1/TeamOne1/Controller/LoginView/SignupViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
