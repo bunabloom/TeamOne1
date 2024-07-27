@@ -17,17 +17,14 @@ class ReservationViewController: UIViewController {
     // 날짜
     let setDate: UIPickerView = {
         let pkv = UIPickerView()
+        pkv.tag = 1
         return pkv
     }()
-    // 영화 상영시간이 들어갈 스택뷰
-    let timeStackView: UIStackView = {
-        let sv = UIStackView()
-        sv.axis = .vertical
-        sv.spacing = 5
-        sv.alignment = .center
-        sv.backgroundColor = .white
-        sv.distribution = .fillEqually
-        return sv
+    // 영화 상영시간
+    let setTime: UIPickerView = {
+        let pkv = UIPickerView()
+        pkv.tag = 2
+        return pkv
     }()
     
     // 영화 인원수 라벨
@@ -105,8 +102,7 @@ class ReservationViewController: UIViewController {
     // pickerView 안에 들어갈 날짜 더미데이터
     var 날짜 = ["2024.07.26", "2024.07.27", "2024.07.27", "2024.07.28", "2024.07.29"]
     // 영화 시간 버튼 설정
-    var buttons: [String] = ["오전 10: 35", "오후 04: 45", "오후 06: 10", "오후 07: 55", "오후 12: 11"]
-//    let buttons: [String] = ["오전 10: 20", "오전 10: 20", "오전 10: 20", "오전 10: 20", "오전 10: 20"]
+    var time = ["오전 10시 35분", "오후 1시 50분", "오후 3시 10분", "오후 5시 30분", "오후 9시 10분"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,10 +112,14 @@ class ReservationViewController: UIViewController {
         setDate.dataSource = self
         setDate.backgroundColor = .white
         
+        setTime.delegate = self
+        setTime.dataSource = self
+        setTime.backgroundColor = .white
+        
     }
     
     func setupUI() {
-        [setDate, timeStackView, peopleLabel, increaseButton, peopleCountLabel, decreaseButton, priceLabel, payButton].forEach { view.addSubview($0) }
+        [setDate, setTime, peopleLabel, increaseButton, peopleCountLabel, decreaseButton, priceLabel, payButton].forEach { view.addSubview($0) }
         
         setDate.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
@@ -127,7 +127,7 @@ class ReservationViewController: UIViewController {
             $0.width.equalTo(200)
         }
         
-        timeStackView.snp.makeConstraints {
+        setTime.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.leading.equalTo(setDate.snp.trailing).inset(10)
             $0.trailing.equalToSuperview().inset(10)
@@ -169,6 +169,7 @@ class ReservationViewController: UIViewController {
             $0.centerX.equalToSuperview()
         }
         
+<<<<<<< HEAD
         
         
         // 버튼을 스택뷰에 추가
@@ -200,6 +201,8 @@ class ReservationViewController: UIViewController {
     // 상영시간 버튼을 눌렀을 때의 액션 버튼
     @objc private func tappedButton() {
        
+=======
+>>>>>>> main
     }
     
     @objc
@@ -271,12 +274,30 @@ class ReservationViewController: UIViewController {
         }
         
         func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            return 날짜.count
+            switch pickerView.tag {
+            case 1:
+                return 날짜.count
+            case 2:
+                return time.count
+            default:
+                return 0
+            }
         }
         
         func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+<<<<<<< HEAD
           saveDate = 날짜[row]
           return 날짜[row]
+=======
+            switch pickerView.tag {
+            case 1:
+                return 날짜[row]
+            case 2:
+                return time[row]
+            default:
+                return nil
+            }
+>>>>>>> main
         }
     }
     
