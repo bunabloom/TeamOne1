@@ -28,20 +28,26 @@ final class SignupViewController: UIViewController {
 
     @objc private func signupTapped() {
         // 유효성검사
+      
         guard let username = signUpView.usernameTextField.text, !username.isEmpty,
               let userbirth = signUpView.userbirthTextField.text, !userbirth.isEmpty,
               let userid = signUpView.useridTextField.text, !userid.isEmpty,
-              let password = signUpView.passwordTextField.text, !password.isEmpty else {
-            showAlert(message: "모든 항목을 채워주세요.")
+              let password = signUpView.passwordTextField.text, !password.isEmpty
+              
+      else {
+            
+          showAlert(message: "모든 항목을 채워주세요.")
             return
         }
 
         // 유효성 검사를 통과한 후 UserDefaults에 저장
-        let userDict: [String: String] = [
+        var userDict: [String: String] = [
             "username": username,
             "userbirth": userbirth,
             "userid": userid,
             "password": password
+            
+            
         ]
         UserDefaults.standard.set(userDict, forKey: userid)
         UserDefaults.standard.synchronize()

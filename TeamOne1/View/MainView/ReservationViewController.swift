@@ -9,10 +9,10 @@ import UIKit
 import SnapKit
 
 class ReservationViewController: UIViewController {
-    
+  var sss: MovieDetailViewController?
     var numberCount: Int = 1
     var price: Int = 14000
-    
+  
     // 날짜
     let setDate: UIPickerView = {
         let pkv = UIPickerView()
@@ -225,6 +225,8 @@ class ReservationViewController: UIViewController {
     
     // 경고메세지 출력
     @objc private func pressPayButton() {
+      
+      print(#function,"movie id:\(resevationModel.reservationMovie)")
         let confirmAlert = UIAlertController(title: "결제 확인", message: "정말로 결제하시겠습니까?", preferredStyle: .alert)
         confirmAlert.addAction(UIAlertAction(title: "결제", style: .default, handler: { _ in
             self.showPaymentCompletedAlert()
@@ -238,6 +240,13 @@ class ReservationViewController: UIViewController {
         let completedAlert = UIAlertController(title: "이런!", message: "잔액이 부족합니다.", preferredStyle: .alert)
         completedAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
         self.present(completedAlert,animated: true, completion: nil)
+      
+      UserDefaults.standard.set("\(resevationModel.reservationMovie)", forKey: "movie")
+      
+      /* 일단 화면이 전환되도 id값을 고유로 가질수 있게끔 하였으나
+       userdefaults에 저장이 안됨
+       -> 저장 이 되면 문제 끝
+       */
     }
     
 }
