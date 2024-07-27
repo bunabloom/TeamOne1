@@ -12,7 +12,8 @@ class ReservationViewController: UIViewController {
   var sss: MovieDetailViewController?
     var numberCount: Int = 1
     var price: Int = 14000
-    var saveDate: String?
+    var saveDate: String? = "2024.07.29"
+    var saveTime: String? = "오전 10시 35분"
   
     // 날짜
     let setDate: UIPickerView = {
@@ -210,26 +211,55 @@ class ReservationViewController: UIViewController {
         let completedAlert = UIAlertController(title: "이런!", message: "잔액이 부족합니다.", preferredStyle: .alert)
         completedAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
         self.present(completedAlert,animated: true, completion: nil)
-      
-      guard let saveDate = saveDate else { return }
-      
-      let info = temp(date: saveDate, time: "10:20", people: numberCount, price: numberCount * 14000 )
-      
-      UserDefaults.standard.set("\(resevationModel.reservationMovie)", forKey: "movie")
-      
-      UserDefaults.standard.setValue("\(info)",forKey:"ticketingInfo")
-      
-      
-      
-      if let ticketinginfo = UserDefaults.standard.string(forKey: "ticketingInfo")
-      {print("####",ticketinginfo)}
-      
-      //하고 ui 만 단정하게 -> 내일하져
-      
-      /* 일단 화면이 전환되도 id값을 고유로 가질수 있게끔 하였으나
-       userdefaults에 저장이 안됨
-       -> 저장 이 되면 문제 끝
-       */
+        
+        // 예약 ID 생성
+        let reservationID = UUID().uuidString
+        
+        // 예약 정보 저장
+        resevationModel.saveReservationToUserDefaults(
+            date: saveDate ?? "",
+            time: saveTime ?? "",
+            people: numberCount,
+            price: numberCount * 14000,
+            reservationID: reservationID
+        )
+        // 모든 예약 내역 불러오기
+        if var allReservations = resevationModel.loadReservationsFromUserDefaults(key: "allReservations") {
+            // 새로운 예약 정보 추가
+            allReservations.append([
+                "id": reservationID,
+                "date": saveDate ?? "",
+                "time": saveTime ?? "",
+                "people": numberCount,
+                "price": numberCount * 14000
+            ])
+            resevationModel.saveReservationsToUserDefaults(reservations: allReservations, key: "allReservations")
+        } else {
+            // 새 예약 내역 생성
+            let newReservations = [
+                [
+                    "id": reservationID,
+                    "date": saveDate ?? "",
+                    "time": saveTime ?? "",
+                    "people": numberCount,
+                    "price": numberCount * 14000
+                ]
+            ]
+            resevationModel.saveReservationsToUserDefaults(reservations: newReservations, key: "allReservations")
+        }
+        
+        
+        
+        // 저장된 모든 예약 내역 출력
+        if let allReservations = resevationModel.loadReservationsFromUserDefaults(key: "allReservations") {
+            print("####", allReservations)
+            //하고 ui 만 단정하게 -> 내일하져
+            
+            /* 일단 화면이 전환되도 id값을 고유로 가질수 있게끔 하였으나
+             userdefaults에 저장이 안됨
+             -> 저장 이 되면 문제 끝
+             */
+        }
     }
     
 }
@@ -261,9 +291,14 @@ class ReservationViewController: UIViewController {
             default:
                 return nil
             }
-
+        }
+        
+        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            if pickerView.tag == 1 {
+                saveDate = 날짜[row]
+            } else if pickerView.tag == 2 {
+                saveTime = time[row]
+            }
         }
     }
-    
-
            
