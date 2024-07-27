@@ -158,6 +158,10 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
     }
 
     func loadUserInfo() {
+      
+      if let usermovie = UserDefaults.standard.string(forKey: "movie"){
+        print("###",usermovie)}
+      
         if let userid = UserDefaults.standard.string(forKey: "loggedInUserID"),
            let userDict = UserDefaults.standard.dictionary(forKey: userid) as? [String: String] {
             idLabel.text = "\(userDict["userid"] ?? "아이디")님"
@@ -165,6 +169,7 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
             이름: \(userDict["username"] ?? "")
             생년월일: \(userDict["userbirth"] ?? "")
             """
+          
         }
     }
 
@@ -197,6 +202,12 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: 100)
     }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    navigationController?.pushViewController(MovieDetailViewController(), animated: true)
+    
+  }
   
 
 }
