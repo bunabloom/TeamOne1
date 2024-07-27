@@ -41,7 +41,7 @@ final class SignupViewController: UIViewController {
         }
 
         // 유효성 검사를 통과한 후 UserDefaults에 저장
-        var userDict: [String: String] = [
+        let userDict: [String: String] = [
             "username": username,
             "userbirth": userbirth,
             "userid": userid,
