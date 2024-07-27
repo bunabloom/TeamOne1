@@ -84,6 +84,8 @@ final class MovieListViewController: UIViewController {
             print("Failed to fetch movies: \(error)")
         }
     }
+  
+  
   func showMovieDetail(with movie: MovieListModel) {
     let detail = MovieDetailViewController()
     detail.movie = movie

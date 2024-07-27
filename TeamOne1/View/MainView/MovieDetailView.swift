@@ -11,45 +11,45 @@ import SnapKit
 
 
 final class MovieDetailView: UIView {
-  private let imgLabel = {
+   let imgLabel = {
     let lb = UIImageView()
     lb.backgroundColor = .gray
     return lb
   }()
-  private let nameLabel = {
+   let nameLabel = {
     let lb = UILabel()
     lb.text = "영화이름"
     lb.textAlignment = .left
     lb.font = .systemFont(ofSize: 25)
     return lb
   }()
-  private let movieDescription = {
+   let movieDescription = {
     let lb = UIScrollView()
     lb.backgroundColor = .blue
     return lb
   }()
-  private let dsView = {
-    let lb = UITextView()
+   let dsView = {
+    let lb = UILabel()
     
     lb.text = "!@#########################################"
     lb.textColor = .black
     return lb
   }()
   
-  private let rating = {
+   let rating = {
     let lb = UILabel()
     lb.text = "별점: 7.8/10 점"
     lb.textAlignment = .left
     return lb
   }()
-  private let releaseData = {
+   let releaseData = {
     let lb = UILabel()
     lb.text = "출시일: 2021-07-07"
     lb.textAlignment = .right
     lb.font.withSize(10)
     return lb
   }()
-  private let TicketingBtn = {
+   let TicketingBtn = {
     let btn = UIButton()
     btn.setTitle("예매하기", for: .normal)
     btn.setTitleColor(.white, for: .normal)
