@@ -241,7 +241,16 @@ class ReservationViewController: UIViewController {
         completedAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
         self.present(completedAlert,animated: true, completion: nil)
       
+      let info = temp(date: "20240727", time: "10:20", people: 2, title: "ss")
+      
       UserDefaults.standard.set("\(resevationModel.reservationMovie)", forKey: "movie")
+      
+      UserDefaults.standard.setValue("\(info)",forKey:"ticketingInfo")
+      
+      if let ticketinginfo = UserDefaults.standard.string(forKey: "ticketingInfo")
+      {print("####",ticketinginfo)}
+      
+      //하고 ui 만 단정하게 -> 내일하져
       
       /* 일단 화면이 전환되도 id값을 고유로 가질수 있게끔 하였으나
        userdefaults에 저장이 안됨

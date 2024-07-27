@@ -10,3 +10,12 @@ import Foundation
 class resevationModel {
   static var reservationMovie = ""
 }
+
+struct temp {
+  let date: String
+  let time: String
+  let people: Int
+  let title: String
+  var price: Int{ people * 12000 }
+}
+
