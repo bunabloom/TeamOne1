@@ -54,7 +54,7 @@ final class MovieSearchViewController: UIViewController {
         guard !isFetchingMovies else { return }
         isFetchingMovies = true
         
-        SearchMovieNetwork.shared.fetchNowPlayingMovies(page: currentPage) { [weak self] result in
+        MovieNetwork.shared.fetchNowPlayingMovies(page: currentPage) { [weak self] result in
             switch result {
             case .success(let movies):
                 self?.movies.append(contentsOf: movies)
