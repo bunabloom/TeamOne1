@@ -31,7 +31,7 @@ class ReservationViewController: UIViewController {
     // 영화 인원수 라벨
     let peopleLabel: UILabel = {
         let lb = UILabel()
-        lb.text = "몇명이얌?"
+        lb.text = "상영 인원: "
         lb.textColor = .black
         lb.textAlignment = .left
         lb.font = .boldSystemFont(ofSize: 25)
