@@ -75,21 +75,21 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 10
-        layout.itemSize = CGSize(width: 200, height: 100)
+        layout.itemSize = CGSize(width: 200, height: 250)
         return layout
     }()
 
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .lightGray
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(MyPageCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         return collectionView
     }()
     
     // 더미 데이터
-    var bookingHistory = ["영화 1", "영화 2", "영화 3"]
+    var bookingHistory = ["영화 1"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,7 +143,7 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(bookingHistoryTitleLabel.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(30)
-            make.height.equalTo(120)
+            make.height.equalTo(250)
         }
 
         logoutButton.snp.makeConstraints { make in
@@ -158,6 +158,10 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
     }
 
     func loadUserInfo() {
+      
+      if let usermovie = UserDefaults.standard.string(forKey: "movie"){
+        print("###",usermovie)}
+      
         if let userid = UserDefaults.standard.string(forKey: "loggedInUserID"),
            let userDict = UserDefaults.standard.dictionary(forKey: userid) as? [String: String] {
             idLabel.text = "\(userDict["userid"] ?? "아이디")님"
@@ -165,6 +169,7 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
             이름: \(userDict["username"] ?? "")
             생년월일: \(userDict["userbirth"] ?? "")
             """
+          
         }
     }
 
@@ -182,21 +187,20 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.contentView.backgroundColor = .lightGray
-        let label = UILabel()
-        label.text = bookingHistory[indexPath.item]
-        label.textAlignment = .center
-        cell.contentView.addSubview(label)
-        label.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! MyPageCollectionViewCell
+        
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 100)
+        return CGSize(width: 250, height: 250)
     }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    navigationController?.pushViewController(MovieDetailViewController(), animated: true)
+    
+  }
   
 
 }

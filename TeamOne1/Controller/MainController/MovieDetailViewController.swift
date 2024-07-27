@@ -12,6 +12,9 @@ import Kingfisher
 final class MovieDetailViewController: UIViewController{
   let movieDetailView = MovieDetailView()
   var movie: MovieListModel?
+  weak var sss: ReservationViewController?
+  var temp = ""
+  // 영화 배열 생성 -> 선택시 배열에 id append ->
   override func viewDidLoad() {
     super.viewDidLoad()
     configureUI()
@@ -32,7 +35,7 @@ final class MovieDetailViewController: UIViewController{
   
   private func loadData(){
     guard let movie = movie else {return}
-      print("movie id : \(movie.id)")
+    
     let url = "https://api.themoviedb.org/3/movie/\(movie.id)?api_key=4e7d627f53b0470f38e13533b907923c&language=ko-KR"
     MovieNetwork().getData(endPoint: url) {[weak self] (result: MovieDetailModel?) in
       guard let result,let self else { return }
@@ -43,6 +46,9 @@ final class MovieDetailViewController: UIViewController{
         self.movieDetailView.dsView.text = result.overview
         self.movieDetailView.rating.text = "\(result.voteAverage)"
         
+        self.temp = "\(movie.id)"
+        print(#function,self.temp)
+        resevationModel.reservationMovie.append(self.temp)
         guard let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(result.posterPath)") else { return }
         self.movieDetailView.imgLabel.kf.setImage(with: imageUrl)
 
@@ -51,8 +57,20 @@ final class MovieDetailViewController: UIViewController{
       
     }
   }
+    
+    // 하프모달 메서드
+    func showModal() {
+        let vc = ReservationViewController()
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+        self.present(vc, animated: true)
+    }
   
   @objc func changeView(){
-    self.present(BookingViewController(), animated: true)
+    
+    showModal()
+    print(#function,temp)
+    
   }
 }
