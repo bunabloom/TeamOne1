@@ -16,6 +16,7 @@ class ReservationViewController: UIViewController {
     var saveTime: String? = "오전 10시 35분"
     var movieTitle: String?
     var movieId: Int = 0
+    var posterPath: String?
   
     // 날짜
     let setDate: UIPickerView = {
@@ -101,7 +102,7 @@ class ReservationViewController: UIViewController {
     }()
     
     // pickerView 안에 들어갈 날짜 더미데이터
-    var 날짜 = ["2024.07.26", "2024.07.27", "2024.07.27", "2024.07.28", "2024.07.29"]
+    var 날짜 = ["2024.07.29", "2024.07.30", "2024.07.31", "2024.08.01", "2024.08.02"]
     // 영화 시간 버튼 설정
     var time = ["오전 10시 35분", "오후 1시 50분", "오후 3시 10분", "오후 5시 30분", "오후 9시 10분"]
     
@@ -198,9 +199,9 @@ class ReservationViewController: UIViewController {
     
     // 경고메세지 출력
     @objc private func pressPayButton() {
-      
+      guard let saveDate = saveDate, let movieTitle = movieTitle, let saveTime = saveTime else { return }
 
-        let confirmAlert = UIAlertController(title: "결제 확인", message: "정말로 결제하시겠습니까?", preferredStyle: .alert)
+      let confirmAlert = UIAlertController(title: "결제 확인", message: "제목: \(movieTitle)\n 상영 시간: \(saveDate) \(saveTime) \n 인원 수: \(numberCount) 금액 :\(price) \n 결제하시겠습니까", preferredStyle: .alert)
         confirmAlert.addAction(UIAlertAction(title: "결제", style: .default, handler: { _ in
             self.showPaymentCompletedAlert()
         }))
@@ -210,31 +211,34 @@ class ReservationViewController: UIViewController {
     
     // 결제완료 메세지 출력
     private func showPaymentCompletedAlert() {
-        let completedAlert = UIAlertController(title: "이런!", message: "잔액이 부족합니다.", preferredStyle: .alert)
-        completedAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-        self.present(completedAlert,animated: true, completion: nil)
-        
-        
-        // 예약 정보 저장
-        
-        reservationModel.saveReservationToUserDefaults(
-            date: saveDate ?? "",
-            time: saveTime ?? "",
-            people: numberCount,
-            price: numberCount * 14000,
-            movieTitle: movieTitle ?? "",
-            movieId: movieId
 
-        )
+        let completedAlert = UIAlertController(title: "결제 완료", message: "결제가 완료되었습니다.", preferredStyle: .alert)
 
-        
-        // 저장된 모든 예약 내역 출력
-        if let allReservations = reservationModel.loadReservationsFromUserDefaults(key: "allReservations") {
-            print("####", allReservations)
+        completedAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
+            guard let self = self else { return }
+            // 예약 정보 저장
+            reservationModel.saveReservationToUserDefaults(
+                date: self.saveDate ?? "",
+                time: self.saveTime ?? "",
+                people: self.numberCount,
+                price: self.numberCount * 14000,
+                movieTitle: self.movieTitle ?? "",
+                movieId: self.movieId,
+                posterPath: self.posterPath ?? ""
+            )
 
-        }
+            // 저장된 모든 예약 내역 출력
+            if let allReservations = reservationModel.loadReservationsFromUserDefaults(key: "allReservations") {
+                print("####", allReservations)
+            }
+            
+            self.dismiss(animated: true, completion: {
+                self.sss?.navigationController?.popViewController(animated: true)
+            })
+        }))
+        self.present(completedAlert, animated: true, completion: nil)
+
     }
-    
 }
     
     extension ReservationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
