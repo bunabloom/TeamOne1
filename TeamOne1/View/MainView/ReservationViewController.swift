@@ -52,7 +52,7 @@ class ReservationViewController: UIViewController {
     lazy var decreaseButton: UIButton = {
         let button = UIButton()
         button.setTitle(" - ", for: .normal)
-        button.backgroundColor = .green
+      button.backgroundColor = UIColor(hexCode: "99b8ff", alpha: 1.0)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
         button.layer.cornerRadius = 5
@@ -64,7 +64,7 @@ class ReservationViewController: UIViewController {
     lazy var increaseButton: UIButton = {
         let button = UIButton()
         button.setTitle(" + ", for: .normal)
-        button.backgroundColor = .green
+        button.backgroundColor = UIColor(hexCode: "ff99a3", alpha: 1.0)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
         button.layer.cornerRadius = 5
@@ -84,17 +84,15 @@ class ReservationViewController: UIViewController {
     
     // 결제하기 버튼
     lazy var payButton: UIButton = {
-        var config = UIButton.Configuration.filled()
-        config.baseBackgroundColor = .systemGray
-        config.baseForegroundColor = .blue
-        config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 120, bottom: 10, trailing: 120)
+        
         
         let button = UIButton(type: .system)
         button.setTitle("결제하기", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-      button.setTitleColor(.red, for: .selected)
+      button.setTitleColor(.white, for: .normal)
+      button.titleLabel?.font = UIFont(name: "NanumSquareNeo-dEb", size: 27)
+      button.backgroundColor = .red
         button.frame.size = CGSize.init(width: 150, height: 60)
-      button.configuration = .plain()
+      
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(pressPayButton), for: .touchUpInside)
         return button
@@ -168,6 +166,8 @@ class ReservationViewController: UIViewController {
         payButton.snp.makeConstraints {
             $0.top.equalTo(priceLabel.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
+          $0.height.equalTo(40)
+          $0.width.equalTo(300)
         }
         
 
