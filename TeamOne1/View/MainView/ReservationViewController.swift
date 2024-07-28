@@ -31,7 +31,7 @@ class ReservationViewController: UIViewController {
     // 영화 인원수 라벨
     let peopleLabel: UILabel = {
         let lb = UILabel()
-        lb.text = "몇명이얌?"
+        lb.text = "상영 인원: "
         lb.textColor = .black
         lb.textAlignment = .left
         lb.font = .boldSystemFont(ofSize: 25)
@@ -52,7 +52,7 @@ class ReservationViewController: UIViewController {
     lazy var decreaseButton: UIButton = {
         let button = UIButton()
         button.setTitle(" - ", for: .normal)
-        button.backgroundColor = .green
+      button.backgroundColor = UIColor(hexCode: "99b8ff", alpha: 1.0)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
         button.layer.cornerRadius = 5
@@ -64,7 +64,7 @@ class ReservationViewController: UIViewController {
     lazy var increaseButton: UIButton = {
         let button = UIButton()
         button.setTitle(" + ", for: .normal)
-        button.backgroundColor = .green
+        button.backgroundColor = UIColor(hexCode: "ff99a3", alpha: 1.0)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
         button.layer.cornerRadius = 5
@@ -84,17 +84,15 @@ class ReservationViewController: UIViewController {
     
     // 결제하기 버튼
     lazy var payButton: UIButton = {
-        var config = UIButton.Configuration.filled()
-        config.baseBackgroundColor = .systemGray
-        config.baseForegroundColor = .blue
-        config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 120, bottom: 10, trailing: 120)
+        
         
         let button = UIButton(type: .system)
         button.setTitle("결제하기", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.red, for: .selected)
+      button.setTitleColor(.white, for: .normal)
+      button.titleLabel?.font = UIFont(name: "NanumSquareNeo-dEb", size: 27)
+      button.backgroundColor = .red
         button.frame.size = CGSize.init(width: 150, height: 60)
-        button.configuration = config
+      
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(pressPayButton), for: .touchUpInside)
         return button
@@ -168,6 +166,8 @@ class ReservationViewController: UIViewController {
         payButton.snp.makeConstraints {
             $0.top.equalTo(priceLabel.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
+          $0.height.equalTo(40)
+          $0.width.equalTo(300)
         }
         
 
@@ -197,7 +197,7 @@ class ReservationViewController: UIViewController {
     // 경고메세지 출력
     @objc private func pressPayButton() {
       
-      print(#function,"movie id:\(resevationModel.reservationMovie)")
+
         let confirmAlert = UIAlertController(title: "결제 확인", message: "정말로 결제하시겠습니까?", preferredStyle: .alert)
         confirmAlert.addAction(UIAlertAction(title: "결제", style: .default, handler: { _ in
             self.showPaymentCompletedAlert()
@@ -212,53 +212,23 @@ class ReservationViewController: UIViewController {
         completedAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
         self.present(completedAlert,animated: true, completion: nil)
         
-        // 예약 ID 생성
-        let reservationID = UUID().uuidString
         
         // 예약 정보 저장
-        resevationModel.saveReservationToUserDefaults(
+        reservationModel.saveReservationToUserDefaults(
             date: saveDate ?? "",
             time: saveTime ?? "",
             people: numberCount,
             price: numberCount * 14000,
-            reservationID: reservationID
+            movieTitle: movieTitle ?? "",
+            movieId: movieId
+
         )
-        // 모든 예약 내역 불러오기
-        if var allReservations = resevationModel.loadReservationsFromUserDefaults(key: "allReservations") {
-            // 새로운 예약 정보 추가
-            allReservations.append([
-                "id": reservationID,
-                "date": saveDate ?? "",
-                "time": saveTime ?? "",
-                "people": numberCount,
-                "price": numberCount * 14000
-            ])
-            resevationModel.saveReservationsToUserDefaults(reservations: allReservations, key: "allReservations")
-        } else {
-            // 새 예약 내역 생성
-            let newReservations = [
-                [
-                    "id": reservationID,
-                    "date": saveDate ?? "",
-                    "time": saveTime ?? "",
-                    "people": numberCount,
-                    "price": numberCount * 14000
-                ]
-            ]
-            resevationModel.saveReservationsToUserDefaults(reservations: newReservations, key: "allReservations")
-        }
-        
-        
+
         
         // 저장된 모든 예약 내역 출력
-        if let allReservations = resevationModel.loadReservationsFromUserDefaults(key: "allReservations") {
+        if let allReservations = reservationModel.loadReservationsFromUserDefaults(key: "allReservations") {
             print("####", allReservations)
-            //하고 ui 만 단정하게 -> 내일하져
-            
-            /* 일단 화면이 전환되도 id값을 고유로 가질수 있게끔 하였으나
-             userdefaults에 저장이 안됨
-             -> 저장 이 되면 문제 끝
-             */
+
         }
     }
     

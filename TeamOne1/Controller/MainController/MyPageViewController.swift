@@ -16,7 +16,7 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 30
-        imageView.image = UIImage(named: "profileimage") // 기본 프로필 이미지
+        imageView.image = UIImage(named: "profileimage")
         return imageView
     }()
 
@@ -81,15 +81,14 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
 
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        collectionView.backgroundColor = .lightGray
+        collectionView.backgroundColor = .white
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(MyPageCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         return collectionView
     }()
     
-    // 더미 데이터
-    var bookingHistory = ["영화 1"]
+    var bookingHistory = [[String: Any]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,12 +154,15 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
 
         // 로그인한 사용자 정보 로드
         loadUserInfo()
+        
+        // 예매 내역 로드
+        loadBookingHistory()
     }
 
     func loadUserInfo() {
       
       if let usermovie = UserDefaults.standard.string(forKey: "movie"){
-        print("###",usermovie)}
+        }
       
         if let userid = UserDefaults.standard.string(forKey: "loggedInUserID"),
            let userDict = UserDefaults.standard.dictionary(forKey: userid) as? [String: String] {
@@ -170,6 +172,13 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
             생년월일: \(userDict["userbirth"] ?? "")
             """
           
+        }
+    }
+    
+    func loadBookingHistory() {
+        if let allReservations = reservationModel.loadReservationsFromUserDefaults(key: "allReservations") {
+            bookingHistory = allReservations
+            collectionView.reloadData()
         }
     }
 
@@ -189,6 +198,9 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! MyPageCollectionViewCell
         
+        let bookingData = bookingHistory[indexPath.item]
+        cell.configure2(temp: bookingData)
+        
         return cell
     }
 
@@ -198,7 +210,8 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
-    navigationController?.pushViewController(MovieDetailViewController(), animated: true)
+    self.present(MovieDetailViewController(), animated: true)
+
     
   }
   

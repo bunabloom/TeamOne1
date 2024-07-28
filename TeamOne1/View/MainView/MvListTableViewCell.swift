@@ -17,7 +17,7 @@ final class MvListTableViewCell: UITableViewCell {
   
   let titleLabel: UILabel = {
     let lb = UILabel()
-    lb.font = UIFont(name: "NanumSquareNeo-dEb", size: 20)
+    lb.font = UIFont(name: "NanumSquareNeo-dEb", size: 27)
     return lb
   }()
   
@@ -25,7 +25,7 @@ final class MvListTableViewCell: UITableViewCell {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
     layout.itemSize = CGSize(width: 100, height: 200) // 아이템 높이를 200으로 변경하여 제목을 포함할 수 있게 설정
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.register(MvCollectionViewCell.self, forCellWithReuseIdentifier: MvCollectionViewCell.id)
@@ -54,7 +54,9 @@ final class MvListTableViewCell: UITableViewCell {
     
     
     titleLabel.snp.makeConstraints {
-      $0.top.left.right.equalToSuperview().inset(10)
+      $0.top.equalTo(self).offset(10)
+      $0.centerX.equalTo(self)
+      $0.height.equalTo(40)
     }
     
     collectionView.snp.makeConstraints {
@@ -95,8 +97,21 @@ extension MvListTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
 class MvCollectionViewCell: UICollectionViewCell {
     static let id = "MvCollectionViewCell"
     
-    let imageView = UIImageView()
-    let titleLabel = UILabel()
+  let imageView = {
+    let iv = UIImageView()
+    iv.contentMode = .scaleAspectFill
+    iv.clipsToBounds = true
+    iv.layer.cornerRadius = 15
+    return iv
+  }()
+  
+  let titleLabel = {
+    let lb = UILabel()
+    lb.textAlignment = .center
+    lb.font = UIFont(name: "NanumSquareNeo-dEb", size: 13)
+    lb.numberOfLines = 2
+    return lb
+  }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -104,13 +119,9 @@ class MvCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
         
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 15
         
-        titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.systemFont(ofSize: 12)
-        titleLabel.numberOfLines = 2
+        
+        
         
         setupConstraints()
     }
@@ -161,7 +172,7 @@ final class SearchMovieCollectionViewCell: UICollectionViewCell {
     // 영화 제목을 표시할 라벨
     let ptTitleLabel: UILabel = {
         let lb = UILabel()
-        lb.font = .boldSystemFont(ofSize: 15)
+        lb.font = UIFont(name: "NanumSquareNeo-cBd", size: 15)
         lb.textColor = .white
         lb.numberOfLines = 0
         lb.backgroundColor = UIColor.black.withAlphaComponent(0.4)
@@ -228,7 +239,7 @@ class MyPageCollectionViewCell: UICollectionViewCell {
     // 영화 티켓 구매 인원수
     let peopleCount: UILabel = {
         let label = UILabel()
-        label.text = "1명"
+        label.text = "0"
         label.textColor = .black
         label.font = .boldSystemFont(ofSize: 15)
         label.textAlignment = .center
@@ -263,6 +274,22 @@ class MyPageCollectionViewCell: UICollectionViewCell {
         
         setUpCellUI()
     }
+    
+    func configure2(temp: [String: Any]) {
+        
+        movieLabel.text = temp["movieTitle"] as? String
+        movieDate.text = temp["date"] as? String
+        movieTime.text = temp["time"] as? String
+        
+        if let people = temp["people"] as? Int {
+            peopleCount.text = "\(people)명"
+        }
+
+        if let price = temp["price"] as? Int {
+            moviePrice.text = "\(price)원"
+        }
+        
+    }
     private func setUpCellUI() {
         
         posterImageView.snp.makeConstraints {
@@ -285,19 +312,19 @@ class MyPageCollectionViewCell: UICollectionViewCell {
         }
         
         movieTime.snp.makeConstraints {
-            $0.top.equalTo(movieDate.snp.bottom).offset(15)
+            $0.top.equalTo(movieDate.snp.bottom).offset(5)
             $0.trailing.equalToSuperview().offset(-10)
             $0.height.equalTo(50)
         }
         
         peopleCount.snp.makeConstraints {
-            $0.top.equalTo(movieTime.snp.bottom).offset(15)
+            $0.top.equalTo(movieTime.snp.bottom).offset(5)
             $0.trailing.equalToSuperview().offset(-10)
             $0.height.equalTo(50)
         }
         
         moviePrice.snp.makeConstraints {
-            $0.top.equalTo(peopleCount.snp.bottom).offset(15)
+            $0.top.equalTo(peopleCount.snp.bottom).offset(5)
             $0.trailing.equalToSuperview().offset(-10)
             $0.height.equalTo(50)
         }
@@ -308,4 +335,24 @@ class MyPageCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+}
+extension UIColor {
+    
+    convenience init(hexCode: String, alpha: CGFloat = 1.0) {
+        var hexFormatted: String = hexCode.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
+        
+        if hexFormatted.hasPrefix("#") {
+            hexFormatted = String(hexFormatted.dropFirst())
+        }
+        
+        assert(hexFormatted.count == 6, "Invalid hex code used.")
+        
+        var rgbValue: UInt64 = 0
+        Scanner(string: hexFormatted).scanHexInt64(&rgbValue)
+        
+        self.init(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+                  green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+                  blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+                  alpha: alpha)
+    }
 }

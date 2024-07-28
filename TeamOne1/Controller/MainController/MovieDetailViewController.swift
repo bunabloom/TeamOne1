@@ -20,6 +20,7 @@ final class MovieDetailViewController: UIViewController{
     configureUI()
     loadData()
     movieDetailView.TicketingBtn.addTarget(self, action: #selector(changeView), for: .touchDown)
+    print(#function,movie?.id)
     
     
     
@@ -42,16 +43,29 @@ final class MovieDetailViewController: UIViewController{
       
       DispatchQueue.main.async {
         self.movieDetailView.nameLabel.text = result.title
-        self.movieDetailView.releaseData.text = "\(result.releaseDate)"
-        self.movieDetailView.dsView.text = result.overview
-        self.movieDetailView.rating.text = "\(result.voteAverage)"
+        self.movieDetailView.releaseData.text = {
+          var temp = "\(result.releaseDate)"
+          var chars = Array(temp)
+          chars[4] = "년"
+          chars[7] = "월"
+          chars.append("일")
+          temp = String(chars)
+          return temp
+        }()
         
-        self.temp = "\(movie.id)"
-        print(#function,self.temp)
-        resevationModel.reservationMovie.append(self.temp)
+        
+       
+        self.movieDetailView.movieDescription.text = result.overview
+        self.movieDetailView.ratingData.text =
+        String(format: "%.1f", result.voteAverage) + "점 / 10점"
+        
+
+        reservationModel.reservationMovie.append(self.temp)
+        
+
         guard let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(result.posterPath)") else { return }
         self.movieDetailView.imgLabel.kf.setImage(with: imageUrl)
-
+        
         
       }
       
@@ -59,17 +73,19 @@ final class MovieDetailViewController: UIViewController{
   }
     
     // 하프모달 메서드
-    func showModal() {
-        let vc = ReservationViewController()
-        if let sheet = vc.sheetPresentationController {
+    func showModal(viewController: UIViewController) {
+        if let sheet = viewController.sheetPresentationController {
             sheet.detents = [.medium()]
         }
-        self.present(vc, animated: true)
+        self.present(viewController, animated: true)
     }
   
   @objc func changeView(){
-    
-    showModal()
+      guard let movie else { return }
+      let reservationVC = ReservationViewController()
+      reservationVC.movieTitle = movie.title
+      reservationVC.movieId = movie.id
+      showModal(viewController: reservationVC)
     print(#function,temp)
     
   }

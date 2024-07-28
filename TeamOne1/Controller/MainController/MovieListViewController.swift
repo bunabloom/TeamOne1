@@ -11,12 +11,11 @@ import SnapKit
 final class MovieListViewController: UIViewController {
     
     let movieListView = MovieListView()
-    let titles = ["개봉 예정 영화", "상영중인 영화", "인기순위"] // 각 행의 타이틀 배열
+    let titles = ["-  상영예정 영화 🎥  - ", "-  상영중인 영화 🎥  -", "-  현재 인기순위 🎥  -"] // 각 행의 타이틀 배열
     var upcomingMovies: [MovieListModel] = []
     var nowPlayingMovies: [MovieListModel] = []
     var popularMovies: [MovieListModel] = []
-    
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         super.viewDidLoad()
         setupMovieList()
         
@@ -37,6 +36,7 @@ final class MovieListViewController: UIViewController {
         view.addSubview(movieListView)
         movieListView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+          $0.bottom.equalToSuperview()
         }
     }
     
