@@ -121,8 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				56A865092C508C9A00A9E982 /* MainController.swift */,
-				9FE787CD2C56B8EA00694F81 /* NetworkController */,
 				9FE787CE2C56B90B00694F81 /* MovieListController */,
+				9FE787CD2C56B8EA00694F81 /* NetworkController */,
 			);
 			path = MainControllers;
 			sourceTree = "<group>";
