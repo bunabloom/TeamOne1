@@ -11,7 +11,7 @@ class reservationModel {
     static var reservationMovie = ""
     
     // 예약 정보를 UserDefaults에 저장하는 메서드
-    static func saveReservationToUserDefaults(date: String, time: String, people: Int, price: Int, movieTitle: String, movieId: Int) {
+    static func saveReservationToUserDefaults(date: String, time: String, people: Int, price: Int, movieTitle: String, movieId: Int, posterPath: String) {
         // 딕셔너리로 변환
         let reservationDict: [String: Any] = [
             "movieId": movieId,
@@ -19,7 +19,8 @@ class reservationModel {
             "date": date,
             "time": time,
             "people": people,
-            "price": price
+            "price": price,
+            "posterPath": posterPath
         ]
         
         // UserDefaults에 저장
