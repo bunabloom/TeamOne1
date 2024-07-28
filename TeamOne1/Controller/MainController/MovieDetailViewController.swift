@@ -23,6 +23,7 @@ final class MovieDetailViewController: UIViewController{
     
     
     
+    
   }
   
   private func configureUI() {
@@ -42,12 +43,21 @@ final class MovieDetailViewController: UIViewController{
       
       DispatchQueue.main.async {
         self.movieDetailView.nameLabel.text = result.title
-        self.movieDetailView.releaseData.text = "\(result.releaseDate)"
-        self.movieDetailView.dsView.text = result.overview
-        self.movieDetailView.rating.text = "\(result.voteAverage)"
+        self.movieDetailView.releaseData.text = {
+          var temp = "\(result.releaseDate)"
+          var chars = Array(temp)
+          chars[4] = "년"
+          chars[7] = "월"
+          chars.append("일")
+          temp = String(chars)
+          return temp
+        }()
         
-        self.temp = "\(movie.id)"
-        print(#function,self.temp)
+       
+        self.movieDetailView.movieDescription.text = result.overview
+        self.movieDetailView.ratingData.text =
+        String(format: "%.1f", result.voteAverage) + "점 / 10점"
+        
         resevationModel.reservationMovie.append(self.temp)
         guard let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(result.posterPath)") else { return }
         self.movieDetailView.imgLabel.kf.setImage(with: imageUrl)

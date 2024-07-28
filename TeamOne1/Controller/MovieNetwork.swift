@@ -39,7 +39,7 @@ final class MovieNetwork {
         }.resume()
     }
   
-  //MARK: 김리인
+  //MARK: MovieDetailView에서 쓸 
   func getData<T: Decodable>(endPoint: String, callback: @escaping (T?) -> Void) {
       let session = URLSession(configuration: .default)
       guard let url = URL(string: endPoint) else { return }

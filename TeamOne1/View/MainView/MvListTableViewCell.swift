@@ -95,8 +95,21 @@ extension MvListTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
 class MvCollectionViewCell: UICollectionViewCell {
     static let id = "MvCollectionViewCell"
     
-    let imageView = UIImageView()
-    let titleLabel = UILabel()
+  let imageView = {
+    let iv = UIImageView()
+    iv.contentMode = .scaleAspectFill
+    iv.clipsToBounds = true
+    iv.layer.cornerRadius = 15
+    return iv
+  }()
+  
+  let titleLabel = {
+    let lb = UILabel()
+    lb.textAlignment = .center
+    lb.font = UIFont(name: "NanumSquareNeo-dEb", size: 13)
+    lb.numberOfLines = 2
+    return lb
+  }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -104,13 +117,9 @@ class MvCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
         
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 15
         
-        titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.systemFont(ofSize: 12)
-        titleLabel.numberOfLines = 2
+        
+        
         
         setupConstraints()
     }
@@ -161,7 +170,7 @@ final class SearchMovieCollectionViewCell: UICollectionViewCell {
     // 영화 제목을 표시할 라벨
     let ptTitleLabel: UILabel = {
         let lb = UILabel()
-        lb.font = .boldSystemFont(ofSize: 15)
+        lb.font = UIFont(name: "NanumSquareNeo-cBd", size: 15)
         lb.textColor = .white
         lb.numberOfLines = 0
         lb.backgroundColor = UIColor.black.withAlphaComponent(0.4)
