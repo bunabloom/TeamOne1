@@ -22,3 +22,5 @@ struct MovieListModel: Codable {
     case posterPath = "poster_path"
   }
 }
+
+

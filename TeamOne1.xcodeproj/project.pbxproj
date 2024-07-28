@@ -99,13 +99,13 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		9F1514EF2C53B22800BF8531 /* LoginView */ = {
+		9F1514EF2C53B22800BF8531 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
 				566D85F52C4E3BF300D59102 /* SignupViewController.swift */,
 				9F4CB9482C4DF9B000D4847F /* LoginViewController.swift */,
 			);
-			path = LoginView;
+			path = LoginViewController;
 			sourceTree = "<group>";
 		};
 		9F1514F02C53B23F00BF8531 /* LoginView */ = {
@@ -197,7 +197,7 @@
 		9F4CB95F2C4E5DAD00D4847F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9F1514EF2C53B22800BF8531 /* LoginView */,
+				9F1514EF2C53B22800BF8531 /* LoginViewController */,
 				9F1514F12C53B25800BF8531 /* MainController */,
 				4586EE9A2C51E8B500FEBFF7 /* MovieNetwork.swift */,
 			);
