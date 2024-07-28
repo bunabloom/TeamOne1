@@ -198,7 +198,8 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
-    navigationController?.pushViewController(MovieDetailViewController(), animated: true)
+    self.present(MovieDetailViewController(), animated: true)
+
     
   }
   
