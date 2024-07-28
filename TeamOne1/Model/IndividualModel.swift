@@ -11,9 +11,11 @@ class reservationModel {
     static var reservationMovie = ""
     
     // 예약 정보를 UserDefaults에 저장하는 메서드
-    static func saveReservationToUserDefaults(date: String, time: String, people: Int, price: Int, reservationID: String) {
+    static func saveReservationToUserDefaults(date: String, time: String, people: Int, price: Int, movieTitle: String, movieId: Int) {
         // 딕셔너리로 변환
         let reservationDict: [String: Any] = [
+            "movieId": movieId,
+            "movieTitle": movieTitle,
             "date": date,
             "time": time,
             "people": people,
@@ -21,8 +23,9 @@ class reservationModel {
         ]
         
         // UserDefaults에 저장
-        UserDefaults.standard.set(reservationDict, forKey: reservationID)
-        UserDefaults.standard.synchronize()
+        var allReservations = loadReservationsFromUserDefaults(key: "allReservations") ?? []
+        allReservations.insert(reservationDict, at: 0)
+        saveReservationsToUserDefaults(reservations: allReservations, key: "allReservations")
     }
 
     // 모든 예약 정보를 배열로 저장
@@ -35,8 +38,7 @@ class reservationModel {
     static func loadReservationsFromUserDefaults(key: String) -> [[String: Any]]? {
         return UserDefaults.standard.array(forKey: key) as? [[String: Any]]
     }
+    
 }
-
-
 
 

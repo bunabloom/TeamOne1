@@ -14,6 +14,8 @@ class ReservationViewController: UIViewController {
     var price: Int = 14000
     var saveDate: String? = "2024.07.29"
     var saveTime: String? = "오전 10시 35분"
+    var movieTitle: String?
+    var movieId: Int = 0
   
     // 날짜
     let setDate: UIPickerView = {
@@ -197,8 +199,7 @@ class ReservationViewController: UIViewController {
     // 경고메세지 출력
     @objc private func pressPayButton() {
       
-      
-      
+
         let confirmAlert = UIAlertController(title: "결제 확인", message: "정말로 결제하시겠습니까?", preferredStyle: .alert)
         confirmAlert.addAction(UIAlertAction(title: "결제", style: .default, handler: { _ in
             self.showPaymentCompletedAlert()
@@ -213,8 +214,6 @@ class ReservationViewController: UIViewController {
         completedAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
         self.present(completedAlert,animated: true, completion: nil)
         
-        // 예약 ID 생성
-        let reservationID = UUID().uuidString
         
         // 예약 정보 저장
         reservationModel.saveReservationToUserDefaults(
@@ -222,44 +221,16 @@ class ReservationViewController: UIViewController {
             time: saveTime ?? "",
             people: numberCount,
             price: numberCount * 14000,
-            reservationID: reservationID
+            movieTitle: movieTitle ?? "",
+            movieId: movieId
+
         )
-        // 모든 예약 내역 불러오기
-        if var allReservations = reservationModel.loadReservationsFromUserDefaults(key: "allReservations") {
-            // 새로운 예약 정보 추가
-            allReservations.append([
-                "id": reservationID,
-                "date": saveDate ?? "",
-                "time": saveTime ?? "",
-                "people": numberCount,
-                "price": numberCount * 14000
-            ])
-            reservationModel.saveReservationsToUserDefaults(reservations: allReservations, key: "allReservations")
-        } else {
-            // 새 예약 내역 생성
-            let newReservations = [
-                [
-                    "id": reservationID,
-                    "date": saveDate ?? "",
-                    "time": saveTime ?? "",
-                    "people": numberCount,
-                    "price": numberCount * 14000
-                ]
-            ]
-            reservationModel.saveReservationsToUserDefaults(reservations: newReservations, key: "allReservations")
-        }
-        
-        
+
         
         // 저장된 모든 예약 내역 출력
         if let allReservations = reservationModel.loadReservationsFromUserDefaults(key: "allReservations") {
             print("####", allReservations)
-            //하고 ui 만 단정하게 -> 내일하져
-            
-            /* 일단 화면이 전환되도 id값을 고유로 가질수 있게끔 하였으나
-             userdefaults에 저장이 안됨
-             -> 저장 이 되면 문제 끝
-             */
+
         }
     }
     
