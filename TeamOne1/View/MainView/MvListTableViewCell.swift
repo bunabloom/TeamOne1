@@ -17,7 +17,7 @@ final class MvListTableViewCell: UITableViewCell {
   
   let titleLabel: UILabel = {
     let lb = UILabel()
-    lb.font = UIFont(name: "NanumSquareNeo-dEb", size: 20)
+    lb.font = UIFont(name: "NanumSquareNeo-dEb", size: 27)
     return lb
   }()
   
@@ -25,7 +25,7 @@ final class MvListTableViewCell: UITableViewCell {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
     layout.itemSize = CGSize(width: 100, height: 200) // 아이템 높이를 200으로 변경하여 제목을 포함할 수 있게 설정
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.register(MvCollectionViewCell.self, forCellWithReuseIdentifier: MvCollectionViewCell.id)
@@ -54,7 +54,9 @@ final class MvListTableViewCell: UITableViewCell {
     
     
     titleLabel.snp.makeConstraints {
-      $0.top.left.right.equalToSuperview().inset(10)
+      $0.top.equalTo(self).offset(10)
+      $0.centerX.equalTo(self)
+      $0.height.equalTo(40)
     }
     
     collectionView.snp.makeConstraints {
@@ -317,4 +319,24 @@ class MyPageCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+}
+extension UIColor {
+    
+    convenience init(hexCode: String, alpha: CGFloat = 1.0) {
+        var hexFormatted: String = hexCode.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
+        
+        if hexFormatted.hasPrefix("#") {
+            hexFormatted = String(hexFormatted.dropFirst())
+        }
+        
+        assert(hexFormatted.count == 6, "Invalid hex code used.")
+        
+        var rgbValue: UInt64 = 0
+        Scanner(string: hexFormatted).scanHexInt64(&rgbValue)
+        
+        self.init(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+                  green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+                  blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+                  alpha: alpha)
+    }
 }

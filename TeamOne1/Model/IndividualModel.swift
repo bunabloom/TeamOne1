@@ -7,7 +7,7 @@
 
 import Foundation
 
-class resevationModel {
+class reservationModel {
     static var reservationMovie = ""
     
     // 예약 정보를 UserDefaults에 저장하는 메서드

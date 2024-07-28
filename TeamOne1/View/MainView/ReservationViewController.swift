@@ -197,7 +197,8 @@ class ReservationViewController: UIViewController {
     // 경고메세지 출력
     @objc private func pressPayButton() {
       
-      print(#function,"movie id:\(resevationModel.reservationMovie)")
+      
+      
         let confirmAlert = UIAlertController(title: "결제 확인", message: "정말로 결제하시겠습니까?", preferredStyle: .alert)
         confirmAlert.addAction(UIAlertAction(title: "결제", style: .default, handler: { _ in
             self.showPaymentCompletedAlert()
@@ -216,7 +217,7 @@ class ReservationViewController: UIViewController {
         let reservationID = UUID().uuidString
         
         // 예약 정보 저장
-        resevationModel.saveReservationToUserDefaults(
+        reservationModel.saveReservationToUserDefaults(
             date: saveDate ?? "",
             time: saveTime ?? "",
             people: numberCount,
@@ -224,7 +225,7 @@ class ReservationViewController: UIViewController {
             reservationID: reservationID
         )
         // 모든 예약 내역 불러오기
-        if var allReservations = resevationModel.loadReservationsFromUserDefaults(key: "allReservations") {
+        if var allReservations = reservationModel.loadReservationsFromUserDefaults(key: "allReservations") {
             // 새로운 예약 정보 추가
             allReservations.append([
                 "id": reservationID,
@@ -233,7 +234,7 @@ class ReservationViewController: UIViewController {
                 "people": numberCount,
                 "price": numberCount * 14000
             ])
-            resevationModel.saveReservationsToUserDefaults(reservations: allReservations, key: "allReservations")
+            reservationModel.saveReservationsToUserDefaults(reservations: allReservations, key: "allReservations")
         } else {
             // 새 예약 내역 생성
             let newReservations = [
@@ -245,13 +246,13 @@ class ReservationViewController: UIViewController {
                     "price": numberCount * 14000
                 ]
             ]
-            resevationModel.saveReservationsToUserDefaults(reservations: newReservations, key: "allReservations")
+            reservationModel.saveReservationsToUserDefaults(reservations: newReservations, key: "allReservations")
         }
         
         
         
         // 저장된 모든 예약 내역 출력
-        if let allReservations = resevationModel.loadReservationsFromUserDefaults(key: "allReservations") {
+        if let allReservations = reservationModel.loadReservationsFromUserDefaults(key: "allReservations") {
             print("####", allReservations)
             //하고 ui 만 단정하게 -> 내일하져
             

@@ -160,7 +160,7 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
     func loadUserInfo() {
       
       if let usermovie = UserDefaults.standard.string(forKey: "movie"){
-        print("###",usermovie)}
+        }
       
         if let userid = UserDefaults.standard.string(forKey: "loggedInUserID"),
            let userDict = UserDefaults.standard.dictionary(forKey: userid) as? [String: String] {
