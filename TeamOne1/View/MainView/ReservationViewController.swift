@@ -14,6 +14,8 @@ class ReservationViewController: UIViewController {
     var price: Int = 14000
     var saveDate: String? = "2024.07.29"
     var saveTime: String? = "오전 10시 35분"
+    var movieTitle: String?
+    var movieId: Int = 0
   
     // 날짜
     let setDate: UIPickerView = {
@@ -214,6 +216,7 @@ class ReservationViewController: UIViewController {
         
         
         // 예약 정보 저장
+        
         reservationModel.saveReservationToUserDefaults(
             date: saveDate ?? "",
             time: saveTime ?? "",
