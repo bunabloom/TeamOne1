@@ -10,12 +10,12 @@ import SnapKit
 import Kingfisher
 
 final class MovieSearchViewController: UIViewController {
-   weak var movieListViewController: MovieListViewController?
+
 
     let movieSearchView = MovieSearchView() // 무비 서치 뷰
     var movies = [MovieListModel]() // 데이터 저장 배열
-    
     var filteredMoives = [MovieListModel]() // 필터링 된 영화 데이터 저장 배열
+  
     var isSearching = false // 검색 상태를 나타내는 변수
     
     var currentPage = 1 // 현재 페이지 번호

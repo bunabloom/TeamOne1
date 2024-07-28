@@ -161,7 +161,7 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
 
     func loadUserInfo() {
       
-      if let usermovie = UserDefaults.standard.string(forKey: "movie"){
+      if UserDefaults.standard.string(forKey: "movie") != nil{
         }
       
         if let userid = UserDefaults.standard.string(forKey: "loggedInUserID"),
