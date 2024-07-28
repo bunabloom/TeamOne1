@@ -20,7 +20,7 @@ final class MovieDetailViewController: UIViewController{
     configureUI()
     loadData()
     movieDetailView.TicketingBtn.addTarget(self, action: #selector(changeView), for: .touchDown)
-    
+    print(#function,movie?.id)
     
     
     
@@ -53,15 +53,17 @@ final class MovieDetailViewController: UIViewController{
           return temp
         }()
         
+        
        
         self.movieDetailView.movieDescription.text = result.overview
         self.movieDetailView.ratingData.text =
         String(format: "%.1f", result.voteAverage) + "점 / 10점"
         
-        resevationModel.reservationMovie.append(self.temp)
+        reservationModel.reservationMovie = ("\(movie.id)")
+        print(#function,reservationModel.reservationMovie)
         guard let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(result.posterPath)") else { return }
         self.movieDetailView.imgLabel.kf.setImage(with: imageUrl)
-
+        
         
       }
       

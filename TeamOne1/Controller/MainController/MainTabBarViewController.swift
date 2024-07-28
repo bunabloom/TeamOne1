@@ -181,6 +181,7 @@ final class MainTabBarViewController: UIViewController {
                 vc.view.snp.makeConstraints {
                     $0.top.equalTo(customTabBar.snp.bottom)
                     $0.leading.trailing.bottom.equalToSuperview()
+                  
                 }
             } else {
                 vc.willMove(toParent: nil)
