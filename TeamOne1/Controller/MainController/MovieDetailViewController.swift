@@ -14,7 +14,8 @@ final class MovieDetailViewController: UIViewController{
   var movie: MovieListModel?
   weak var sss: ReservationViewController?
   var temp = ""
-  // 영화 배열 생성 -> 선택시 배열에 id append ->
+    var posterPath: String?
+
   override func viewDidLoad() {
     super.viewDidLoad()
     configureUI()
@@ -61,6 +62,8 @@ final class MovieDetailViewController: UIViewController{
         
 
         reservationModel.reservationMovie.append(self.temp)
+          
+          self.posterPath = result.posterPath
         
 
         guard let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(result.posterPath)") else { return }
@@ -85,6 +88,8 @@ final class MovieDetailViewController: UIViewController{
       let reservationVC = ReservationViewController()
       reservationVC.movieTitle = movie.title
       reservationVC.movieId = movie.id
+      reservationVC.posterPath = posterPath
+      reservationVC.sss = self
       showModal(viewController: reservationVC)
     print(#function,temp)
     

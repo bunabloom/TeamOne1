@@ -27,7 +27,7 @@ class SignUPView: UIView {
   
   let usernameTextField: UITextField = {
       let textField = UITextField()
-      textField.placeholder = "이름"
+      textField.placeholder = "name"
       textField.borderStyle = .roundedRect
       return textField
   }()
@@ -41,7 +41,7 @@ class SignUPView: UIView {
   
   let userbirthTextField: UITextField = {
       let textField = UITextField()
-      textField.placeholder = "생년월일"
+      textField.placeholder = "birth"
       textField.borderStyle = .roundedRect
       return textField
   }()
