@@ -10,7 +10,7 @@ import SnapKit
 import Kingfisher
 
 final class MovieSearchViewController: UIViewController {
-   var movieListViewController: MovieListViewController?
+   weak var movieListViewController: MovieListViewController?
 
     let movieSearchView = MovieSearchView() // 무비 서치 뷰
     var movies = [MovieListModel]() // 데이터 저장 배열
