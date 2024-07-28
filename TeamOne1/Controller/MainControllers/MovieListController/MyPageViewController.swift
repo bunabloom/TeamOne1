@@ -190,7 +190,7 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func loadBookingHistory() {
-        if let allReservations = reservationModel.loadReservationsFromUserDefaults(key: "allReservations") {
+        if let allReservations = DataController.loadReservationsFromUserDefaults(key: "allReservations") {
             bookingHistory = allReservations
             collectionView.reloadData()
         }

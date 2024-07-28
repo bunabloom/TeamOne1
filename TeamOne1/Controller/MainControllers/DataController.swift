@@ -7,8 +7,8 @@
 
 import Foundation
 
-class reservationModel {
-    static var reservationMovie = ""
+class DataController {
+
     
     // 예약 정보를 UserDefaults에 저장하는 메서드
     static func saveReservationToUserDefaults(date: String, time: String, people: Int, price: Int, movieTitle: String, movieId: Int, posterPath: String) {
