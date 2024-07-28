@@ -216,6 +216,8 @@ class ReservationViewController: UIViewController {
         
         
         // 예약 정보 저장
+      
+      //saveReservationToUserDefaults(date: String, time: String, people: Int, price: Int, movieTitle: String, movieId: Int)
         reservationModel.saveReservationToUserDefaults(
             date: saveDate ?? "",
             time: saveTime ?? "",
