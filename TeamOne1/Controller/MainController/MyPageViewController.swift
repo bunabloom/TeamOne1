@@ -208,12 +208,7 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
         return CGSize(width: 250, height: 250)
     }
   
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
-    self.present(MovieDetailViewController(), animated: true)
 
-    
-  }
   
 
 }
