@@ -17,7 +17,8 @@ final class MovieNetwork {
     
     static let shared = MovieNetwork() // 싱글톤 패턴
     
-    // 현재 상영중인 영화 데이터 가져오기
+  
+    //MARK: 현재 상영중인 영화 데이터 가져오기
     func fetchNowPlayingMovies(page: Int, completion: @escaping (Result<[MovieListModel], Error>) -> Void) {
       let urlString = "\(Constants.BASE_URL)now_playing?api_key=\(Constants.API_KEY)&language=ko-KR&page=\(page)&region=KR"
         guard let url = URL(string: urlString) else { return }
@@ -37,7 +38,8 @@ final class MovieNetwork {
         }.resume()
     }
   
-  //MARK: MovieDetailView에서 쓸 
+  
+  //MARK: MovieDetailView에서 쓸
   func getData<T: Decodable>(endPoint: String, callback: @escaping (T?) -> Void) {
       let session = URLSession(configuration: .default)
       guard let url = URL(string: endPoint) else { return }
