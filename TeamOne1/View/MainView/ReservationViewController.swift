@@ -16,6 +16,7 @@ class ReservationViewController: UIViewController {
     var saveTime: String? = "오전 10시 35분"
     var movieTitle: String?
     var movieId: Int = 0
+    var posterPath: String?
   
     // 날짜
     let setDate: UIPickerView = {
@@ -211,29 +212,30 @@ class ReservationViewController: UIViewController {
     // 결제완료 메세지 출력
     private func showPaymentCompletedAlert() {
         let completedAlert = UIAlertController(title: "이런!", message: "잔액이 부족합니다.", preferredStyle: .alert)
-        completedAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-        self.present(completedAlert,animated: true, completion: nil)
-        
-        
-        // 예약 정보 저장
-        reservationModel.saveReservationToUserDefaults(
-            date: saveDate ?? "",
-            time: saveTime ?? "",
-            people: numberCount,
-            price: numberCount * 14000,
-            movieTitle: movieTitle ?? "",
-            movieId: movieId
+        completedAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
+            guard let self = self else { return }
+            // 예약 정보 저장
+            reservationModel.saveReservationToUserDefaults(
+                date: self.saveDate ?? "",
+                time: self.saveTime ?? "",
+                people: self.numberCount,
+                price: self.numberCount * 14000,
+                movieTitle: self.movieTitle ?? "",
+                movieId: self.movieId,
+                posterPath: self.posterPath ?? ""
+            )
 
-        )
-
-        
-        // 저장된 모든 예약 내역 출력
-        if let allReservations = reservationModel.loadReservationsFromUserDefaults(key: "allReservations") {
-            print("####", allReservations)
-
-        }
+            // 저장된 모든 예약 내역 출력
+            if let allReservations = reservationModel.loadReservationsFromUserDefaults(key: "allReservations") {
+                print("####", allReservations)
+            }
+            
+            self.dismiss(animated: true, completion: {
+                self.sss?.navigationController?.popViewController(animated: true)
+            })
+        }))
+        self.present(completedAlert, animated: true, completion: nil)
     }
-    
 }
     
     extension ReservationViewController: UIPickerViewDelegate, UIPickerViewDataSource {

@@ -279,13 +279,20 @@ class MyPageCollectionViewCell: UICollectionViewCell {
         movieLabel.text = temp["movieTitle"] as? String
         movieDate.text = temp["date"] as? String
         movieTime.text = temp["time"] as? String
-        
+               
         if let people = temp["people"] as? Int {
             peopleCount.text = "\(people)명"
         }
 
         if let price = temp["price"] as? Int {
             moviePrice.text = "\(price)원"
+        }
+        
+        if let posterPath = temp["posterPath"] as? String {
+            let url = URL(string: "https://image.tmdb.org/t/p/w500" + posterPath)
+            posterImageView.kf.setImage(with: url)
+        } else {
+            posterImageView.image = nil
         }
         
     }
