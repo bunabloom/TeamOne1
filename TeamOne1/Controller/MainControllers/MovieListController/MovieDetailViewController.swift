@@ -21,7 +21,7 @@ final class MovieDetailViewController: UIViewController{
     configureUI()
     loadData()
     movieDetailView.TicketingBtn.addTarget(self, action: #selector(changeView), for: .touchDown)
-    print(#function,movie?.id)
+    
     
     
     

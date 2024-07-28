@@ -44,7 +44,7 @@ final class LoginViewController: UIViewController {
             UserDefaults.standard.set(userid, forKey: "loggedInUserID")
               showAlert(message: "로그인 성공") {
                 // 로그인 성공 시 메인화면 전환
-                let tabBarController = MainTabBarViewController()
+                let tabBarController = MainController()
                   self.navigationController?.pushViewController(tabBarController, animated: true)
               }
             } else {
