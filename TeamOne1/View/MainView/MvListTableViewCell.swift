@@ -237,7 +237,7 @@ class MyPageCollectionViewCell: UICollectionViewCell {
     // 영화 티켓 구매 인원수
     let peopleCount: UILabel = {
         let label = UILabel()
-        label.text = "1명"
+        label.text = "0"
         label.textColor = .black
         label.font = .boldSystemFont(ofSize: 15)
         label.textAlignment = .center
@@ -272,6 +272,22 @@ class MyPageCollectionViewCell: UICollectionViewCell {
         
         setUpCellUI()
     }
+    
+    func configure2(temp: [String: Any]) {
+        
+        movieLabel.text = temp["movieTitle"] as? String
+        movieDate.text = temp["date"] as? String
+        movieTime.text = temp["time"] as? String
+        
+        if let people = temp["people"] as? Int {
+            peopleCount.text = "\(people)명"
+        }
+
+        if let price = temp["price"] as? Int {
+            moviePrice.text = "\(price)원"
+        }
+        
+    }
     private func setUpCellUI() {
         
         posterImageView.snp.makeConstraints {
@@ -294,19 +310,19 @@ class MyPageCollectionViewCell: UICollectionViewCell {
         }
         
         movieTime.snp.makeConstraints {
-            $0.top.equalTo(movieDate.snp.bottom).offset(15)
+            $0.top.equalTo(movieDate.snp.bottom).offset(5)
             $0.trailing.equalToSuperview().offset(-10)
             $0.height.equalTo(50)
         }
         
         peopleCount.snp.makeConstraints {
-            $0.top.equalTo(movieTime.snp.bottom).offset(15)
+            $0.top.equalTo(movieTime.snp.bottom).offset(5)
             $0.trailing.equalToSuperview().offset(-10)
             $0.height.equalTo(50)
         }
         
         moviePrice.snp.makeConstraints {
-            $0.top.equalTo(peopleCount.snp.bottom).offset(15)
+            $0.top.equalTo(peopleCount.snp.bottom).offset(5)
             $0.trailing.equalToSuperview().offset(-10)
             $0.height.equalTo(50)
         }

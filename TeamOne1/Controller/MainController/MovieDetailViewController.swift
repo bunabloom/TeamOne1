@@ -58,7 +58,8 @@ final class MovieDetailViewController: UIViewController{
         self.movieDetailView.ratingData.text =
         String(format: "%.1f", result.voteAverage) + "점 / 10점"
         
-        resevationModel.reservationMovie.append(self.temp)
+        reservationModel.reservationMovie.append(self.temp)
+        
         guard let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(result.posterPath)") else { return }
         self.movieDetailView.imgLabel.kf.setImage(with: imageUrl)
 
@@ -69,17 +70,19 @@ final class MovieDetailViewController: UIViewController{
   }
     
     // 하프모달 메서드
-    func showModal() {
-        let vc = ReservationViewController()
-        if let sheet = vc.sheetPresentationController {
+    func showModal(viewController: UIViewController) {
+        if let sheet = viewController.sheetPresentationController {
             sheet.detents = [.medium()]
         }
-        self.present(vc, animated: true)
+        self.present(viewController, animated: true)
     }
   
   @objc func changeView(){
-    
-    showModal()
+      guard let movie else { return }
+      let reservationVC = ReservationViewController()
+      reservationVC.movieTitle = movie.title
+      reservationVC.movieId = movie.id
+      showModal(viewController: reservationVC)
     print(#function,temp)
     
   }
