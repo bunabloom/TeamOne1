@@ -13,7 +13,7 @@ final class MovieDetailViewController: UIViewController{
   let movieDetailView = MovieDetailView()
   var movie: MovieListModel?
   weak var sss: ReservationViewController?
-  var temp = ""
+  
     var posterPath: String?
 
   override func viewDidLoad() {
@@ -21,7 +21,7 @@ final class MovieDetailViewController: UIViewController{
     configureUI()
     loadData()
     movieDetailView.TicketingBtn.addTarget(self, action: #selector(changeView), for: .touchDown)
-    print(#function,movie?.id)
+    
     
     
     
@@ -61,7 +61,7 @@ final class MovieDetailViewController: UIViewController{
         String(format: "%.1f", result.voteAverage) + "점 / 10점"
         
 
-        reservationModel.reservationMovie.append(self.temp)
+
           
           self.posterPath = result.posterPath
         
@@ -91,7 +91,7 @@ final class MovieDetailViewController: UIViewController{
       reservationVC.posterPath = posterPath
       reservationVC.sss = self
       showModal(viewController: reservationVC)
-    print(#function,temp)
+
     
   }
 }

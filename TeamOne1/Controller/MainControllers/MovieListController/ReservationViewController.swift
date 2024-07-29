@@ -217,7 +217,7 @@ class ReservationViewController: UIViewController {
         completedAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { [weak self] _ in
             guard let self = self else { return }
             // 예약 정보 저장
-            reservationModel.saveReservationToUserDefaults(
+            DataController.saveReservationToUserDefaults(
                 date: self.saveDate ?? "",
                 time: self.saveTime ?? "",
                 people: self.numberCount,
@@ -228,7 +228,7 @@ class ReservationViewController: UIViewController {
             )
 
             // 저장된 모든 예약 내역 출력
-            if let allReservations = reservationModel.loadReservationsFromUserDefaults(key: "allReservations") {
+            if let allReservations = DataController.loadReservationsFromUserDefaults(key: "allReservations") {
                 print("####", allReservations)
             }
             

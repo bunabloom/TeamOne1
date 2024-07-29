@@ -87,6 +87,23 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
         collectionView.register(MyPageCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         return collectionView
     }()
+  lazy var verticalStackView = {
+    let verticalStackView = UIStackView(arrangedSubviews: [idLabel, helloLabel])
+    verticalStackView.axis = .vertical
+    verticalStackView.spacing = 5
+    verticalStackView.alignment = .leading
+    return verticalStackView
+  }()
+
+
+  // 수평 스택 뷰 설정
+  lazy var horizontalStackView = {
+    let horizontalStackView = UIStackView(arrangedSubviews: [verticalStackView, profileImageView])
+    horizontalStackView.axis = .horizontal
+    horizontalStackView.spacing = 10
+    horizontalStackView.alignment = .center
+    return horizontalStackView
+  }()
     
     var bookingHistory = [[String: Any]]()
 
@@ -95,62 +112,10 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
         view.backgroundColor = .white
 
         // 수직 스택 뷰 설정
-        let verticalStackView = UIStackView(arrangedSubviews: [idLabel, helloLabel])
-        verticalStackView.axis = .vertical
-        verticalStackView.spacing = 5
-        verticalStackView.alignment = .leading
-
-        // 수평 스택 뷰 설정
-        let horizontalStackView = UIStackView(arrangedSubviews: [verticalStackView, profileImageView])
-        horizontalStackView.axis = .horizontal
-        horizontalStackView.spacing = 10
-        horizontalStackView.alignment = .center
+      configureUI()
 
         // 서브뷰 추가
-        view.addSubview(horizontalStackView)
-        view.addSubview(userInfoTitleLabel)
-        view.addSubview(userInfoLabel)
-        view.addSubview(bookingHistoryTitleLabel)
-        view.addSubview(collectionView)
-        view.addSubview(logoutButton)
 
-        // 레이아웃 설정
-        horizontalStackView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
-            make.leading.trailing.equalToSuperview().inset(30)
-        }
-
-        profileImageView.snp.makeConstraints { make in
-            make.width.height.equalTo(60)
-        }
-
-        userInfoTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(horizontalStackView.snp.bottom).offset(60)
-            make.leading.trailing.equalToSuperview().inset(30)
-        }
-
-        userInfoLabel.snp.makeConstraints { make in
-            make.top.equalTo(userInfoTitleLabel.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(30)
-        }
-
-        bookingHistoryTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(userInfoLabel.snp.bottom).offset(40)
-            make.leading.trailing.equalToSuperview().inset(30)
-        }
-
-        collectionView.snp.makeConstraints { make in
-            make.top.equalTo(bookingHistoryTitleLabel.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(30)
-            make.height.equalTo(250)
-        }
-
-        logoutButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-30)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(200)
-            make.height.equalTo(40)
-        }
 
         // 로그인한 사용자 정보 로드
         loadUserInfo()
@@ -158,10 +123,59 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
         // 예매 내역 로드
         loadBookingHistory()
     }
+  func configureUI(){
+    [
+      horizontalStackView,
+      userInfoTitleLabel,
+      userInfoLabel,
+      bookingHistoryTitleLabel,
+      collectionView,
+      logoutButton
+    ].forEach{view.addSubview($0)}
+
+
+    // 레이아웃 설정
+    horizontalStackView.snp.makeConstraints { 
+        $0.top.equalTo(view.safeAreaLayoutGuide).offset(40)
+      $0.leading.trailing.equalToSuperview().inset(30)
+    }
+
+    profileImageView.snp.makeConstraints { 
+      $0.width.height.equalTo(60)
+    }
+
+    userInfoTitleLabel.snp.makeConstraints { 
+      $0.top.equalTo(horizontalStackView.snp.bottom).offset(60)
+        $0.leading.trailing.equalToSuperview().inset(30)
+    }
+
+    userInfoLabel.snp.makeConstraints { 
+      $0.top.equalTo(userInfoTitleLabel.snp.bottom).offset(10)
+        $0.leading.trailing.equalToSuperview().inset(30)
+    }
+
+    bookingHistoryTitleLabel.snp.makeConstraints { 
+      $0.top.equalTo(userInfoLabel.snp.bottom).offset(40)
+      $0.leading.trailing.equalToSuperview().inset(30)
+    }
+
+    collectionView.snp.makeConstraints { 
+      $0.top.equalTo(bookingHistoryTitleLabel.snp.bottom).offset(10)
+      $0.leading.trailing.equalToSuperview().inset(30)
+      $0.height.equalTo(250)
+    }
+
+    logoutButton.snp.makeConstraints { 
+      $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-30)
+      $0.centerX.equalToSuperview()
+      $0.width.equalTo(200)
+      $0.height.equalTo(40)
+    }
+  }
 
     func loadUserInfo() {
       
-      if let usermovie = UserDefaults.standard.string(forKey: "movie"){
+      if UserDefaults.standard.string(forKey: "movie") != nil{
         }
       
         if let userid = UserDefaults.standard.string(forKey: "loggedInUserID"),
@@ -176,7 +190,7 @@ final class MyPageViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     func loadBookingHistory() {
-        if let allReservations = reservationModel.loadReservationsFromUserDefaults(key: "allReservations") {
+        if let allReservations = DataController.loadReservationsFromUserDefaults(key: "allReservations") {
             bookingHistory = allReservations
             collectionView.reloadData()
         }
